@@ -38,12 +38,28 @@ class User extends Authenticatable
     ];
 
 
-
+/*======================================================================
+|                                                                       |
+|       ************** Relationships Functions **************           |
+|                                                                       |
+========================================================================*/
     # many to many relationship between users and roles table
     public function roles()
     {
         return $this->belongsToMany('App\Models\Role');
     }
+
+    # one to many relationship between users and genders table
+    public function gender()
+    {
+        return $this->belongsTo('App\Models\Gender');
+    }
+
+/*======================================================================
+|                                                                       |
+|            ************** Other Functions **************              |
+|                                                                       |
+========================================================================*/
 
     #isAdmin method checks if authenticated user is Admin or not
     public function isAdmin()
@@ -60,4 +76,23 @@ class User extends Authenticatable
 
         return false;
     }
+
+
+    #check if user has this specific role or not
+    public function hasRole($role)
+    {
+        $roles = $this->roles()->get()->pluck('name');
+
+        if($roles->contains($role))
+        {
+            return TRUE;
+        }
+
+        return FALSE;
+
+    }
+
+
+
+
 }

@@ -345,7 +345,7 @@
                                         <div class="dropdowns dropdown--author">
                                             <ul>
                                                 <li>
-                                                    <a href="author.blade.php">
+                                                    <a href="{{route('user.index')}}">
                                                         <span class="lnr lnr-user"></span>پروفایل </a>
                                                 </li>
                                                 <li>

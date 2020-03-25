@@ -42,11 +42,11 @@ class RegisterController extends Controller
         //if user has Admin role then redirect to admin panel otherwise redirect to profile page
         if($user->isAdmin())
         {
-            return route('admin.dashboard');
+            return route('adminpanel');
         }
         else
         {
-            return route('user.dashboard');
+            return route('user.index');
         }
     }
 

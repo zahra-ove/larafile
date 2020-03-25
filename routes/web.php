@@ -5,31 +5,40 @@ use Illuminate\Support\Facades\Route;
 
 
 
-/*==========================================================================================
-|                                                                                           |
-|                                                                                           |
-|                                   Frontend Routes                                         |
-|                                                                                           |
-|                                                                                           |
-===========================================================================================*/
+/*======================================================================
+|                                                                       |
+|            ************** Backend Routes **************              |
+|                                                                       |
+========================================================================*/
 
 Route::get('/', function () {
     return view('index');
 });
 
 
-Route::get('/contact', 'ContactsController@index')->name('contacts.index');    //display contact us page
-Route::post('/contact', 'ContactsController@store')->name('contacts.store');    //post contact us page to store method
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('admin', 'Admin\AdminController@index')->name('adminpanel')->middleware('role:Admin');   //admin panel display
 
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->name('admin.dashboard');
-Route::get('/user/dashboard', function () {
-    return view('user.dashboard');
-})->name('user.dashboard');
+
+
+
+/*======================================================================
+|                                                                       |
+|            ************** Frontend Routes **************              |
+|                                                                       |
+========================================================================*/
+
+Route::get('404', function(){
+    return view('errors.404');
+});
+Route::get('403', function(){
+    return view('errors.403');
+});
+
+Route::resource('user', 'Frontend\UserController')->middleware('auth');    // show mwthod in this controller displays user's profile page
+
+Route::get('/contact', 'Frontend\ContactController@index')->name('contacts.index');    //display contact us page
+Route::post('/contact', 'Frontend\ContactController@store')->name('contacts.store');    //post contact us page to store method
