@@ -47,14 +47,14 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $user
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
 
     // displaying profile page of user
-    public function show($user)
+    public function show($id)
     {
-        return view('user.profile', compact('user'));
+
     }
 
     /**

@@ -19,7 +19,8 @@
 <link rel="stylesheet" href="{{asset('css/trumbowyg.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
+<link rel="stylesheet" href="{{asset('css/myStyle.css')}}">
 <!-- endinject -->
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon2.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon3.png">

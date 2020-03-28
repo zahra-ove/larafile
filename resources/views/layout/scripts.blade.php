@@ -19,3 +19,4 @@
 <script src="js/dashboard.js"></script>
 <script src="js/main.js"></script>
 <script src="js/map.js"></script>
+<script src="js/myJS.js"></script>

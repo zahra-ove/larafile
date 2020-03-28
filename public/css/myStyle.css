@@ -1,0 +1,16 @@
+.x {
+    background-color: #3e94f0;
+    color: white;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+a.x {
+    color: inherit;
+}
+
+.w {
+    padding-left: 150px;
+}
