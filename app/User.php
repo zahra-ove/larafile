@@ -55,6 +55,12 @@ class User extends Authenticatable
         return $this->belongsTo('App\Models\Gender');
     }
 
+    # one to many relationship between addresses table and users table
+    public function addresses()
+    {
+        return $this->hasMany('App\Models\Address');
+    }
+
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |

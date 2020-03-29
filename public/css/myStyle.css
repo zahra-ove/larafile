@@ -14,3 +14,14 @@ a.x {
 .w {
     padding-left: 150px;
 }
+
+.customFont {
+    font-size: 16px;
+    color: rgb(6, 6, 29);
+}
+
+
+.bg-lightYelllow
+{
+    background-color: rgb(211, 198, 124);
+}

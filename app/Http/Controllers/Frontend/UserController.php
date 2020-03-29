@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Models\Gender;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -20,7 +21,26 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('user.profile', compact('user'));
+
+        //finding gender of user to show mr or miss befor her name
+        $userGenderNumber = $user->gender()->first()->id;
+        $userGender = '';
+        switch($userGenderNumber)
+        {
+            case(1):
+                $userGender = "سرکار خانم";
+                break;
+            case(2):
+                $userGender = "جناب آقای";
+                break;
+            case(3):
+                $userGender = "خانم/آقای";
+                break;
+        }
+        return view('user.profile')->with([
+                                            'user'       => $user,
+                                            'userGender' => $userGender
+                                        ]);
     }
 
     /**
@@ -77,7 +97,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return 'heloo';
     }
 
     /**
@@ -89,5 +109,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function changePassword(Request $request, $id)
+    {
+        
     }
 }
