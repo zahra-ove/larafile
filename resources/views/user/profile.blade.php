@@ -54,7 +54,7 @@
                 {{-- user information panel --}}
                 <div class="tab-pane"  id="userInfo" role="tabpanel">
                     <div class="card">
-                        <div class="card-header text-center">
+                        <div class="card-header text-center bg-lightBlue">
                             مشخصات کاربری
                         </div>
                         <div class="card-body">
@@ -140,17 +140,30 @@
 
                                 <div class="form-group row justify-content-center align-items-center">
                                     <label for="pass" class="col-sm-2 px-0 text-center mb-0">رمز عبور جدید:</label>
-                                    <div class="col-sm-6 px-0">
-                                        <input type="password" class="form-control" id="pass" name="password" >
+                                    <div class="input-group col-sm-5 px-0">
+                                        <input class="form-control" type="password" name="password" />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-eye" style="display:none;" id="eye_open1"></i>
+                                                <i class="fa fa-eye-slash" id="eye_close1"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group row justify-content-center align-items-center">
-                                    <label for="passChange" class="col-sm-2 px-0 text-center mb-0">تکرار رمز عبور جدید:</label>
-                                    <div class="col-sm-6 px-0">
-                                        <input type="password" class="form-control" id="passChange" name="password_confirmation">
+                                    <label for="pass" class="col-sm-2 px-0 text-center mb-0">تکرار رمز عبور جدید:</label>
+                                    <div class="input-group col-sm-5 px-0">
+                                        <input class="form-control" type="password" name="password_confirmation" />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-eye" style="display:none;" id="eye_open2"></i>
+                                                <i class="fa fa-eye-slash" id="eye_close2"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>
