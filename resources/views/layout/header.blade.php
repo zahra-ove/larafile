@@ -19,11 +19,10 @@
                 <div class="col-lg-8 offset-lg-1 col-md-9 col-6 v_middle">
                     <!-- start .author-area -->
                     <div class="author-area">
-                        <a href="signup.blade.php" class="author-area__seller-btn inline">تبدیل به یک فروشنده</a>
 
                         @if (Route::has('login'))
                                 @auth
-                                    <div class="author__notification_area">
+                                    {{-- <div class="author__notification_area">
                                         <ul>
                                             <li class="has_dropdown">
                                                 <div class="icon_wrap">
@@ -326,13 +325,17 @@
                                                 </div>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                     <!--start .author__notification_area -->
 
                                     <!--start .author-author__info-->
                                     <div class="author-author__info inline has_dropdown">
                                         <div class="author__avatar">
-                                            <img src="images/usr_avatar.png" alt="user avatar">
+                                            @php
+                                                $user = Auth::user();
+                                            @endphp
+                                            {{-- <img src="images/usr_avatar.png" alt="user avatar"> --}}
+                                            <img src="{{asset($user->image()->first()->image_path.'/'.$user->image()->first()->image_name)}}" alt="user picture profile" class="rounded-circle" style="width:50px;height:50px;">
                                         </div>
 
                                         <div class="autor__info">
@@ -471,7 +474,7 @@
                                         <div class="dropdowns dropdown--author">
                                             <ul>
                                                 <li>
-                                                    <a href="author.blade.php">
+                                                    <a href="{{route('user.index')}}">
                                                         <span class="lnr lnr-user"></span>پروفایل </a>
                                                 </li>
                                                 <li>
@@ -511,8 +514,15 @@
                                                         <span class="lnr lnr-briefcase"></span>برداشت ها </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
-                                                        <span class="lnr lnr-exit"></span>خروج </a>
+                                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                                    onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                                        <span class="lnr lnr-exit"></span>خروج
+                                                    </a>
+
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                        @csrf
+                                                    </form>
                                                 </li>
                                             </ul>
                                         </div>
@@ -526,9 +536,6 @@
                                 </div>
                             @endif
 
-                            <div class="text-center">
-                                <a href="signup.blade.php" class="author-area__seller-btn inline">تبدیل به فروشنده </a>
-                            </div>
                         </div>
                     </div>
                     <!-- end /.mobile_content -->

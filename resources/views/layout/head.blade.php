@@ -11,6 +11,7 @@
 <!-- inject:css -->
 <link rel="stylesheet" href="{{asset('css/animate.css')}}">
 <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{asset('css/fontawesome/css/all.css')}}">
 <link rel="stylesheet" href="{{asset('css/fontello.css')}}">
 <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
 <link rel="stylesheet" href="{{asset('css/lnr-icon.css')}}">

@@ -8,10 +8,13 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Models\Gender;
 use Illuminate\Support\Facades\Auth;
-
+use App\Traits\uploadTrait;
 
 class UserController extends Controller
 {
+
+    //this trait is for file uploading
+    use uploadTrait;
     /**
      * Display a listing of the resource.
      *
@@ -38,8 +41,9 @@ class UserController extends Controller
                 break;
         }
         return view('user.profile')->with([
-                                            'user'       => $user,
-                                            'userGender' => $userGender
+                                            'user'             => $user,
+                                            'userGender'       => $userGender,
+                                            'userGenderNumber' => $userGenderNumber,
                                         ]);
     }
 
@@ -97,7 +101,52 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return 'heloo';
+
+        $editedUser = User::findOrFail($id);   //finding user based on id
+
+        $request->validate([
+            'fullname'    =>  'nullable|string',
+            'username'    =>  'required|string',
+            'age'         =>  'nullable|numeric',
+            'mobile'      =>  'nullable|string|max:20',
+            'gender_id'   =>  'nullable|numeric',
+            'image'       =>  'nullable|image|mimes:jpeg,png,jpg,gif|max:2049'
+        ]);
+
+        $editedUser->fullname   =  $request->input("fullname");
+        $editedUser->username   =  $request->input("username");
+        $editedUser->age        =  $request->input("age");
+        $editedUser->mobile     =  $request->input("mobile");
+        $editedUser->gender_id  =  $request->input("gender_id");
+
+        $editedUser->save();
+
+        if($request->hasFile('image'))
+        {
+            $fileNameToStore = $this->storeImage($request, 'image' ,'public/users');
+
+            if($editedUser->image()->count() == 0)
+            {
+                $editedUser->image()->create([
+                    'image_name' => $fileNameToStore,
+                    'image_path' => 'storage/users'
+                ]);
+            }else{
+                $editedUser->image()->delete();
+                $editedUser->image()->create([
+                    'image_name' => $fileNameToStore,
+                    'image_path' => 'storage/users'
+                ]);
+            }
+
+
+        }else{
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+
+
+        return redirect()->route('user.index');
     }
 
     /**
@@ -114,6 +163,6 @@ class UserController extends Controller
 
     public function changePassword(Request $request, $id)
     {
-        
+
     }
 }

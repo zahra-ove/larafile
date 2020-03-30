@@ -22,4 +22,3 @@
 <script src="{{asset('js/map.js')}}"></script>
 <script src="{{asset('js/myJS.js')}}"></script>
 
-{{-- <script src="{{asset('js/bootstrap-show-password.min.js')}}"></script> --}}

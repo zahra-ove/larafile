@@ -3,7 +3,11 @@
 @section('content')
 
 <div class="container-fluid" style="background-color: #f5f5f5;height: 120vh;">
-    <h4 class="pb-4 pt-4 mx-5">پنل کاربری</h4>
+    <div class="pb-3 pt-5" >
+        <h4 style="display:inline-block; width:190px;font-size:30px;">پنل کاربری</h4>
+        <i class="far fa-address-card fa-2x ml-1 mr-2" id="panel_icon"></i>
+    </div>
+
     <div class="row" style="direction: rtl">
 
         <!-- Sidebar  -->
@@ -54,26 +58,34 @@
                 {{-- user information panel --}}
                 <div class="tab-pane"  id="userInfo" role="tabpanel">
                     <div class="card">
-                        <div class="card-header text-center bg-lightBlue">
+                        <div class="card-header text-center bg-lightBlue whiteText">
                             مشخصات کاربری
                         </div>
-                        <div class="card-body">
-
+                        <div class="card-body ">
+                            <div class="row">
+                                <div class="col-sm-3 mb-2 offset-sm-5">
+                                    <img src="{{asset($user->image()->first()->image_path.'/'.$user->image()->first()->image_name)}}" alt="user picture profile"class="rounded-circle" style="width:150px;height:150px;">
+                                </div>
+                            </div>
                             <p>نام و نام خانوادگی  <span class="customFont"> {{$userGender}} {{$user->fullname}}</span></p>
                             <p>نام کاربری  <span class="customFont">{{$user->username}}</span></p>
-                            <p>ایمیل<span class="customFont">{{$user->email}}</span></p>
-                            <p>شماره همراه  <span class="customFont">{{$user->mobile}}</span></p>
+                            <p>ایمیل  <span class="customFont">{{$user->email}}</span></p>
+                            @isset($user->mobile)
+                                <p>شماره همراه  <span class="customFont">{{$user->mobile}}</span></p>
+                            @endisset
                         </div>
                     </div>
                 </div>
+
                 {{-- edit user inforamtion panel  --}}
                 <div class="tab-pane"  id="userEdit" role="tabpanel">
+                    @include('layout/notifications')
                     <div class="card">
-                        <div class="card-header text-center bg-lightYelllow">
+                        <div class="card-header text-center bg-lightYelllow ">
                              ویرایش اطلاعات
                         </div>
                         <div class="card-body">
-                            <form action="{{route('user.update', ['user' => $user])}}" method="POST">
+                            <form action="{{route('user.update', ['user' => $user])}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
@@ -84,7 +96,7 @@
                                     </div>
 
                                     <div class="form-group col-sm-6">
-                                        <label for="username">نام کاربری  </label>
+                                        <label for="username">نام کاربری</label>
                                         <input type="text" class="form-control" id="username" name="username" value="{{$user->username}}">
                                     </div>
                                 </div>
@@ -92,7 +104,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-sm-6">
                                         <label for="email">ایمیل</label>
-                                        <input type="text" class="form-control" id="email" name="email" value="{{$user->email}}">
+                                        <input type="text" class="form-control" id="email" name="email" value="{{$user->email}}" disabled>
                                     </div>
 
                                     <div class="form-group col-sm-6">
@@ -113,14 +125,19 @@
                                     <div class="form-group col-sm-2">
                                         <label for="gender">جنسیت</label>
                                         <select name="gender_id" id="gender" class="form-control">
-                                            <option value="3"  @if($userGender == 'خانم/آقای') selected @endif>من ...</option>
-                                            <option value="1"  @if($userGender == 'خانم') selected @endif>خانم هستم</option>
-                                            <option value="2"  @if($userGender == 'آقا') selected @endif>آقا هستم</option>
+                                            <option value="3"  @if($userGenderNumber == 3) selected @endif>من ...</option>
+                                            <option value="1"  @if($userGenderNumber == 1) selected @endif>خانم هستم</option>
+                                            <option value="2"  @if($userGenderNumber == 2) selected @endif>آقا هستم</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="row justify-content-center mt-3">
+                                <div class="form-row align-items-center">
+                                    <label for="image" class="mb-0 mr-2">آپلود تصویر</label>
+                                    <input type="file"  id="image" name="image" />
+                                </div>
+
+                                <div class="row justify-content-center mt-4">
                                     <button type="submit" class="btn btn-warning btn-outline-warning col-sm-3 p-2 text-black">ویرایش</button>
                                 </div>
                             </form>
@@ -128,15 +145,16 @@
                     </div>
                 </div>
 
+                {{-- change password --}}
                 <div class="tab-pane"  id="passChange" role="tabpanel">
                     <div class="card">
-                        <div class="card-header text-center">
+                        <div class="card-header text-center bg-lightpurple">
                             تغییر رمز عبور
                         </div>
                         <div class="card-body">
                             <form action="{{route('user.changePass', ['id' => $user->id])}}" method="POST">
                                 @csrf
-                                @method('PUT')
+                                @method('PATCH')
 
                                 <div class="form-group row justify-content-center align-items-center">
                                     <label for="pass" class="col-sm-2 px-0 text-center mb-0">رمز عبور جدید:</label>
@@ -164,10 +182,16 @@
                                     </div>
                                 </div>
 
+                                <div class="row  justify-content-center">
+                                    <div class="col-sm-3">
+                                        <button type="submit" class="btn btn-secondary p-2">تغییر پسورد</button>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
+
                 <div class="tab-pane"  id="orders" role="tabpanel">
                     hi2
                 </div>

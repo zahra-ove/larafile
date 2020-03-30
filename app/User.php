@@ -61,6 +61,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Address');
     }
 
+    # one to one polymorphic relationship between User model and Image model
+    public function image()
+    {
+        return $this->morphOne('App\Models\Image', 'imageable');
+    }
+
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |

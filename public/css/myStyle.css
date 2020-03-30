@@ -20,7 +20,7 @@ a.x {
     color: rgb(6, 6, 29);
 }
 
-
+/* backgrund color */
 .bg-lightYelllow
 {
     background-color: rgb(211, 198, 124);
@@ -28,4 +28,21 @@ a.x {
 .bg-lightBlue
 {
     background-color: rgb(73, 126, 196);
+}
+.bg-lightpurple
+{
+    background-color: rgb(214, 141, 216);
+}
+
+
+/* text color */
+.whiteText{
+    color: white;
+}
+
+
+/* Icons styling */
+.panel_icon{
+    position: relative;
+    top: 2px;
 }
