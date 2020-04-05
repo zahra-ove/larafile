@@ -1,5 +1,22 @@
 
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700");
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/IRANSansWeb.eot');
+    src: url('/fonts/IRANSansWeb.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('/fonts/IRANSansWeb.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/
+    url('/fonts/IRANSansWeb.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('/fonts/IRANSansWeb.ttf') format('truetype');
+}
+
 body
 {
     direction: rtl;
+    text-align: right !important;
+    font-family: 'IRANSans', sans-serif;
+    position: relative;
+    font-weight: 400;
+    font-size: 15px;
 }

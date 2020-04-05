@@ -1,63 +1,57 @@
 <div class="nav-left-sidebar sidebar-dark">
     <div class="menu-list">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="d-xl-none d-lg-none" href="{{route('adminpanel')}}">پنل اصلی</a>
+            <a class="d-xl-none d-lg-none" href="{{route('admin.index')}}">پنل اصلی</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav flex-column px-0">
                     <li class="nav-divider text-right">
-                        Menu
+                        داشبورد
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" aria-controls="submenu-1">
                             <i class="fa fa-fw fa-user-circle"></i>
-                            Dashboard
+                            جدول ها
                         </a>
                         <div id="submenu-1" class="collapse submenu" style="">
                             <ul class="nav flex-column px-0">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">E-Commerce</a>
-                                    <div id="submenu-1-2" class="collapse submenu" style="">
-                                        <ul class="nav flex-column text-right p-0">
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="index.html">E Commerce Dashboard</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="ecommerce-product.html">Product List</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="ecommerce-product-single.html">Product Single</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="ecommerce-product-checkout.html">Product Checkout</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
+
                                 <li class="nav-item text-right p-0">
-                                    <a class="nav-link" href="dashboard-finance.html">Finance</a>
-                                </li>
-                                <li class="nav-item text-right p-0">
-                                    <a class="nav-link" href="dashboard-sales.html">Sales</a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-1" aria-controls="submenu-1-1">Infulencer</a>
+                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-1" aria-controls="submenu-1-1">کاربران</a>
                                     <div id="submenu-1-1" class="collapse submenu" style="">
+
                                         <ul class="nav flex-column text-right p-0">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="dashboard-influencer.html">Influencer</a>
+                                                <a class="nav-link" href="{{route('admin.users.index')}}">لیست کاربران</a>
                                             </li>
+
                                             <li class="nav-item">
-                                                <a class="nav-link" href="influencer-finder.html">Influencer Finder</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="influencer-profile.html">Influencer Profile</a>
+                                                <a class="nav-link" href="{{route('admin.users.create')}}">افزودن کاربر جدید</a>
                                             </li>
                                         </ul>
+
                                     </div>
                                 </li>
+
+                                <li class="nav-item text-right p-0">
+                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">محصولات</a>
+                                    <div id="submenu-1-2" class="collapse submenu" style="">
+
+                                        <ul class="nav flex-column text-right p-0">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="">لیست محصولات</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="">افزودن محصول جدید</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+
                             </ul>
                         </div>
                     </li>

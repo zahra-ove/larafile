@@ -13,5 +13,5 @@
     <link rel="stylesheet" href="{{asset('adminPanel/assets/vendor/charts/c3charts/c3.css')}}">
     <link rel="stylesheet" href="{{asset('adminPanel/assets/vendor/fonts/flag-icon-css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{asset('adminPanel/css/customstyle.css')}}">
-    <title>پنل مدیریت وبسایت Bevedel</title>
+    <title>@yield('title', 'پنل مدیریت وبسایت Bevedel')</title>
 </head>

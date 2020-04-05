@@ -19,6 +19,7 @@ class User extends Authenticatable
         'fullname', 'username', 'email', 'password', 'gender_id', 'age', 'mobile'
     ];
 
+    protected $guard = ['id'];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -101,7 +102,33 @@ class User extends Authenticatable
         }
 
         return FALSE;
+    }
 
+
+    #Accessor for diplay pretty format for empty mobile field
+    public function getMobileAttribute($value)
+    {
+        if(empty($value)){
+
+            return '-';
+        }
+        else{
+
+            return $value;
+        }
+    }
+
+    #Accessor for diplay pretty format for empty age field
+    public function getAgeAttribute($value)
+    {
+        if(empty($value)){
+
+            return '-';
+        }
+        else{
+
+            return $value;
+        }
     }
 
 

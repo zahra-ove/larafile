@@ -5,7 +5,7 @@
 <div class="container-fluid" style="background-color: #f5f5f5;height: 120vh;">
     <div class="pb-3 pt-5" >
         <h4 style="display:inline-block; width:190px;font-size:30px;">پنل کاربری</h4>
-        <i class="fas fa-tools fa-2x ml-1 mr-2"></i>
+        <i class="fas fa-tools align-middle fa-2x ml-1 mr-2"></i>
     </div>
 
     <div class="row" style="direction: rtl">
@@ -23,17 +23,17 @@
 
                     <div class="list-group z" style="display:none;">
                         <a class="list-group-item x  w-100" data-toggle="list" href="#userInfo" role="tab">
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-user align-middle mr-1"></i>
                             مشخصات کاربری
                         </a>
 
                         <a class="list-group-item x  w-100" data-toggle="list" href="#userEdit" role="tab">
-                            <i class="far fa-address-card" id="panel_icon"></i>
+                            <i class="far fa-address-card align-middle mr-1" id="panel_icon"></i>
                             <span> ویرایش اطلاعات </span>
                         </a>
 
                         <a class="list-group-item x  w-100" data-toggle="list" href="#passChange" role="tab">
-                            <i class="fas fa-key"></i>
+                            <i class="fas fa-key align-middle mr-1"></i>
                             تغییر رمز عبور
                         </a>
                     </div>
@@ -41,15 +41,15 @@
                 </span>
 
 
-                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#orders"         role="tab">سفارش ها</a>
-                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#courses"        role="tab">دوره های خریداری شده</a>
-                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#activePlan"     role="tab">طرح اشتراکی فعال</a>
-                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#transactions"   role="tab">تراکنش ها</a>
-                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#interests"      role="tab">علاقمندی ها</a>
-                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#followUpContent"role="tab">مطالب دنبال شده</a>
-                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#comments"       role="tab">نظرات ثبت شده</a>
-                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#tickets"        role="tab">تیکت های پششتیبانی</a>
-                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#wallet"         role="tab">کیف پول</a>
+                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#orders"         role="tab"><i class="fas fa-receipt mr-2 align-middle"></i>سفارش ها</a>
+                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#courses"        role="tab"><i class="fas fa-book-reader mr-2 align-middle"></i>دوره های خریداری شده</a>
+                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#activePlan"     role="tab"><i class="fas fa-cubes mr-2 align-middle"></i>طرح اشتراکی فعال</a>
+                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#transactions"   role="tab"><i class="fas fa-money-check-alt mr-2 align-middle"></i>تراکنش ها</a>
+                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#interests"      role="tab"><i class="fas fa-heart mr-2 align-middle"></i>علاقمندی ها</a>
+                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#followUpContent"role="tab"><i class="fas fa-bookmark mr-2 align-middle"></i>مطالب دنبال شده</a>
+                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#comments"       role="tab"><i class="fas fa-comment mr-2 align-middle"></i>نظرات ثبت شده</a>
+                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#tickets"        role="tab"><i class="fas fa-ticket-alt mr-2 align-middle"></i>تیکت های پششتیبانی</a>
+                <a class="list-group-item list-group-item-action y" data-toggle="list" href="#wallet"         role="tab"><i class="fas fa-wallet mr-2 align-middle"></i>کیف پول</a>
             </div>
 
         </div>

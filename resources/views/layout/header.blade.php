@@ -49,8 +49,9 @@
                                             <ul>
                                                 @if($user->isAdmin())
                                                     <li>
-                                                        <a href="{{route('adminpanel')}}">
-                                                            <span class="lnr lnr-user"></span>پنل ادمین</a>
+                                                        <a href="{{route('admin.index')}}">
+                                                            <span class="lnr lnr-user"></span>پنل ادمین
+                                                        </a>
                                                     </li>
                                                 @endif
 
@@ -68,7 +69,7 @@
                                                     <a href="dashboard-setting.blade.php">
                                                         <span class="lnr lnr-cog"></span> تنظیمات</a>
                                                 </li>
-                                                
+
                                                 <li>
                                                     <a href="cart.blade.php">
                                                         <span class="lnr lnr-cart"></span>خرید ها</a>

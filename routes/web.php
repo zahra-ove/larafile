@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-
-Route::get('admin', 'Admin\AdminController@index')->name('adminpanel')->middleware('role:Admin');   //admin panel display
+Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function(){
+    Route::get('', 'AdminController@index')->name('index')->middleware('role:Admin');   //admin panel display
+    Route::resource('/users', 'UserController');
+});
 
 
 
@@ -36,7 +38,7 @@ Route::get('403', function(){
     return view('errors.403');
 });
 
-Route::resource('user', 'Frontend\UserController')->middleware('auth');    // show mwthod in this controller displays user's profile page
+Route::resource('user', 'Frontend\UserController')->only(['update', 'index'])->middleware('auth');    // show mwthod in this controller displays user's profile page
 Route::patch('user/changePassword/{id}', 'Frontend\UserController@changePassword')->name('user.changePass');
 
 Route::get('/contact', 'Frontend\ContactController@index')->name('contacts.index');    //display contact us page
