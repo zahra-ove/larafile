@@ -5,7 +5,7 @@
 <div class="container-fluid" style="background-color: #f5f5f5;height: 120vh;">
     <div class="pb-3 pt-5" >
         <h4 style="display:inline-block; width:190px;font-size:30px;">پنل کاربری</h4>
-        <i class="far fa-address-card fa-2x ml-1 mr-2" id="panel_icon"></i>
+        <i class="fas fa-tools fa-2x ml-1 mr-2"></i>
     </div>
 
     <div class="row" style="direction: rtl">
@@ -23,14 +23,17 @@
 
                     <div class="list-group z" style="display:none;">
                         <a class="list-group-item x  w-100" data-toggle="list" href="#userInfo" role="tab">
+                            <i class="fas fa-user"></i>
                             مشخصات کاربری
                         </a>
 
                         <a class="list-group-item x  w-100" data-toggle="list" href="#userEdit" role="tab">
-                            ویرایش اطلاعات
+                            <i class="far fa-address-card" id="panel_icon"></i>
+                            <span> ویرایش اطلاعات </span>
                         </a>
 
                         <a class="list-group-item x  w-100" data-toggle="list" href="#passChange" role="tab">
+                            <i class="fas fa-key"></i>
                             تغییر رمز عبور
                         </a>
                     </div>
@@ -64,7 +67,11 @@
                         <div class="card-body ">
                             <div class="row">
                                 <div class="col-sm-3 mb-2 offset-sm-5">
+                                    @if($user->image()->count())
                                     <img src="{{asset($user->image()->first()->image_path.'/'.$user->image()->first()->image_name)}}" alt="user picture profile"class="rounded-circle" style="width:150px;height:150px;">
+                                    @else
+                                        <img src="{{asset('storage/users/unknownUser.jpg')}}" alt="user picture profile" class="rounded-circle" style="width:50px;height:50px;">
+                                    @endif
                                 </div>
                             </div>
                             <p>نام و نام خانوادگی  <span class="customFont"> {{$userGender}} {{$user->fullname}}</span></p>

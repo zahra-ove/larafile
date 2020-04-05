@@ -33,7 +33,9 @@ a.x {
 {
     background-color: rgb(214, 141, 216);
 }
-
+.bg-darkBlue{
+    background-color: rgb(5, 2, 71);
+}
 
 /* text color */
 .whiteText{
@@ -45,4 +47,12 @@ a.x {
 .panel_icon{
     position: relative;
     top: 2px;
+}
+
+/* buttons style */
+.registerLoginButton{
+    padding: 4px 16px;
+    background-color: floralwhite;
+    color: black;
+    border-radius: 20px;
 }

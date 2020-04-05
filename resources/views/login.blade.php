@@ -43,7 +43,7 @@
             <div class="col-lg-6 offset-lg-3">
                 <form action="{{route('login')}}" method="POST">
                     @csrf
-                    
+
                     <div class="cardify login">
                         <div class="login--header">
                             <h3>خوش آمدید</h3>
@@ -72,14 +72,14 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn--md btn--round" type="submit">ورود </button>
+                            <button class="btn btn--md btn--round" type="submit" style="margin-right: 30%;">ورود </button>
 
                             <div class="login_assist">
                                 <p class="recover">
                                     <a href="pass-recovery.html">نام کاربری </a> یا
                                     <a href="pass-recovery.html">کلمه عبور </a> فراموش کرده اید ؟</p>
                                 <p class="signup">هنوز
-                                    <a href="signup.html">ثبت نام </a>  نکرده اید ؟</p>
+                                    <a href="{{route('register')}}">ثبت نام </a>  نکرده اید ؟</p>
                             </div>
                         </div>
                         <!-- end .login--form -->
