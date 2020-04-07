@@ -15,10 +15,14 @@
 <link rel="stylesheet" href="{{asset('css/fontello.css')}}">
 <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
 <link rel="stylesheet" href="{{asset('css/lnr-icon.css')}}">
-<link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">
-<link rel="stylesheet" href="{{asset('css/slick.css')}}">
+{{-- <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">
+<link rel="stylesheet" href="{{asset('css/slick.css')}}"> --}}
 <link rel="stylesheet" href="{{asset('css/trumbowyg.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}">
+{{-- start carousel css library --}}
+<link rel="stylesheet" href="{{asset('css/carousel/owl.carousel.css')}}" >
+<link rel="stylesheet" href="{{asset('css/carousel/owl.theme.default.css')}}">
+{{-- end carousel css library --}}
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/myStyle.css')}}">
 <!-- endinject -->

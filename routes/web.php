@@ -16,6 +16,8 @@ Auth::routes();
 Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function(){
     Route::get('', 'AdminController@index')->name('index')->middleware('role:Admin');   //admin panel display
     Route::resource('/users', 'UserController');
+    Route::resource('/categories', 'CategoryController');
+    Route::resource('/files', 'FileController');
 });
 
 
@@ -27,9 +29,8 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->group(function(){
 |            ************** Frontend Routes **************              |
 |                                                                       |
 ========================================================================*/
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', 'Frontend\FrontController@index')->name('home');
+
 
 Route::get('404', function(){
     return view('errors.404');
@@ -43,3 +44,5 @@ Route::patch('user/changePassword/{id}', 'Frontend\UserController@changePassword
 
 Route::get('/contact', 'Frontend\ContactController@index')->name('contacts.index');    //display contact us page
 Route::post('/contact', 'Frontend\ContactController@store')->name('contacts.store');    //post contact us page to store method
+
+

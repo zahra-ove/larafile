@@ -36,4 +36,30 @@ $(document).ready(function() {
 
         $('input[name="password_confirmation"]').attr("type", "password");
     });
+
+
+//carousel
+    $('.owl-carousel').owlCarousel({
+        rtl: true,
+        loop: true,
+        margin: 10,
+        nav: false,
+        dots: true,
+        stagePadding: 50,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:4
+            }
+        }
+    })
 });
+
+
+
+

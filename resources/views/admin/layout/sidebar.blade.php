@@ -41,11 +41,29 @@
 
                                         <ul class="nav flex-column text-right p-0">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="">لیست محصولات</a>
+                                                <a class="nav-link" href="{{route('admin.files.index')}}">لیست محصولات</a>
                                             </li>
 
                                             <li class="nav-item">
-                                                <a class="nav-link" href="">افزودن محصول جدید</a>
+                                                <a class="nav-link" href="{{route('admin.files.create')}}">افزودن محصول جدید</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+
+
+                                <li class="nav-item text-right p-0">
+                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-3" aria-controls="submenu-1-3">دسته بندی ها</a>
+                                    <div id="submenu-1-3" class="collapse submenu" style="">
+
+                                        <ul class="nav flex-column text-right p-0">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('admin.categories.index')}}">لیست دسته بندی ها </a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('admin.categories.create')}}">افزودن دسته جدید</a>
                                             </li>
                                         </ul>
 
