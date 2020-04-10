@@ -4,39 +4,36 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class File extends Model
+
+
+
+class Order extends Model
 {
 
-    protected $guarded = ['id'];
+
 
 /*======================================================================
 |                                                                       |
 |       ************** Relationships Functions **************           |
 |                                                                       |
 ========================================================================*/
-    public function type()
+
+    public function files()
     {
-        return $this->belongsTo('App\Models\Type');
+        return $this->morphedByMany('App\Models\File', 'orderable');
     }
 
-    public function category()
-    {
-        return $this->belongsTo('App\Models\Category');
-    }
+    // public function plans()
+    // {
+    //     return $this->morphedByMany('App\Models\Plan', 'orderable');
+    // }
 
-    # one to many relationship between file and image
-    public function images()
-    {
-        return $this->morphMany('App\Models\Image', 'imageable');
-    }
+    // public function episodes()
+    // {
+    //     return $this->morphedByMany('App\Models\Episode', 'orderable');
+    // }
 
-    # many to many polymorphic relationship between file and order model
-    public function orders()
-    {
-        return $this->morphToMany('App\Models\Order', 'orderable');
-    }
 
-    
     /*======================================================================
     |                                                                       |
     |            ************** Other Functions **************              |

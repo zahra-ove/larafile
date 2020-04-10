@@ -17,7 +17,7 @@ class UserController extends Controller
 {
 
 //---------- including traits here -----------------//
-    use uploadtrait;
+    use uploadTrait;
 // -------------------------------------------------//
 
 

@@ -56,3 +56,11 @@ a.x {
     color: black;
     border-radius: 20px;
 }
+
+
+
+/* padding */
+.sectionPadding {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}

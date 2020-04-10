@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col-md-12 no0-padding">
             <div class="owl-carousel owl-theme  mt-4">
-                @foreach($newFiles as $newFile)
+                @foreach($topsoldFiles as $file)
                     <div class="item">
                         <div class="card mt-3">
-                            <img src="{{asset($newFile->images()->first()->image_path.'/'.$newFile->images()->first()->image_name)}}" alt="product image" class="card-img-top">
+                            <img src="{{asset($file->images()->first()->image_path.'/'.$file->images()->first()->image_name)}}" alt="product image" class="card-img-top">
                             <div class="card-body">
-                                <p>{{$newFile->file_name}}</p>
-                                <p>{{$newFile->description}}</p>
+                                <p>{{$file->file_name}}</p>
+                                <p>{{$file->description}}</p>
                             </div>
                         </div>
                     </div>
