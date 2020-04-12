@@ -177,7 +177,8 @@ START Newest PRODUCT AREA    section--padding
     </div>
 
     <!-- start new products -->
-    @include('newProducts', $newFiles)
+    {{-- @include('newProducts', $newFiles) --}}
+    @include('subProducts', ['productsArray' => $newFiles])
     <!-- end new products -->
 </section>
 <!--================================
@@ -207,7 +208,9 @@ START Top 10 selling Files in last 3 months     section--padding
     </div>
 
     <!-- start top ten selling files -->
-    @include('topSoldFiles', $topsoldFiles)
+    {{-- @include('topSoldFiles', $topsoldFiles) --}}
+    @include('subProducts', ['productsArray' => $topsoldFiles])
+
     <!-- end top ten selling files -->
 </section>
 <!--================================
