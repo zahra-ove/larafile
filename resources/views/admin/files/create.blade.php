@@ -73,6 +73,15 @@
                     </div>
                 </div>
 
+                {{-- Third row  -- description --}}
+                <div class="form-row justify-content-center mt-4">
+                    <div class="form-group">
+                        <label for="desc_ck" class="control-label">توضیحات محصول:</label>
+                        <textarea name="description" id="desc_ck" cols="30" rows="20">{{old('description')}}</textarea>
+                    </div>
+                </div>
+
+                {{-- Buttons --}}
                 <div class="row justify-content-center mt-5">
                     <div class="col-4 text-center">
                         <button type="submit" class="btn btn-secondary btn-sm">ذخیره</button>

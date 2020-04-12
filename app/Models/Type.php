@@ -17,4 +17,19 @@ class Type extends Model
     {
         return $this->hasMany('App\Models\File');
     }
+
+    public function getNameAttribute($value)
+    {
+        switch($value)
+        {
+            case 'video':
+                return "ویدیو";
+            case 'sound':
+                return "صوتی";
+            case 'PDF':
+                return "PDF";
+            case "PPT":
+                return "پاورپوینت";
+        }
+    }
 }

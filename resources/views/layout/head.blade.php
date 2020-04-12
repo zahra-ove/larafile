@@ -15,8 +15,6 @@
 <link rel="stylesheet" href="{{asset('css/fontello.css')}}">
 <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
 <link rel="stylesheet" href="{{asset('css/lnr-icon.css')}}">
-{{-- <link rel="stylesheet" href="{{asset('css/owl.carousel.css')}}">
-<link rel="stylesheet" href="{{asset('css/slick.css')}}"> --}}
 <link rel="stylesheet" href="{{asset('css/trumbowyg.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}">
 {{-- start carousel css library --}}
@@ -28,4 +26,4 @@
 <!-- endinject -->
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon3.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon3.png')}}">

@@ -17,3 +17,8 @@
 <script src="{{asset('adminPanel/assets/vendor/charts/c3charts/d3-5.4.0.min.js')}}"></script>
 <script src="{{asset('adminPanel/assets/vendor/charts/c3charts/C3chartjs.js')}}"></script>
 <script src="{{asset('adminPanel/assets/libs/js/dashboard-ecommerce.js')}}"></script>
+{{-- ckeditor 5 --}}
+<script src="{{asset('ckeditor5-build-classic/ckeditor.js')}}"></script>
+<script src="{{asset('ckeditor5-build-classic/translations/fa.js')}}"></script>
+{{-- My Custom JS --}}
+<script src="{{asset('adminPanel/js/customJs.js')}}"></script>

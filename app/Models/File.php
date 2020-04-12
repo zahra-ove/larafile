@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Support\Str;
+
+
 class File extends Model
 {
 
@@ -36,12 +39,15 @@ class File extends Model
         return $this->morphToMany('App\Models\Order', 'orderable');
     }
 
-    
+
     /*======================================================================
     |                                                                       |
     |            ************** Other Functions **************              |
     |                                                                       |
     ========================================================================*/
-
+    public function getShortDescriptionAttribute()
+    {
+        return Str::words($this->description, 20, '...');
+    }
 
 }

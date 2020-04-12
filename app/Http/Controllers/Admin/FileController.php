@@ -59,19 +59,18 @@ class FileController extends Controller
        $data = collect($request->validated())->forget('image')->toArray();
        $file = File::create($data);
 
+
        if($request->hasFile('image'))
        {
            $fileNameToStore = $this->storeImage($request, 'image' ,'public/files');
 
            $file->images()->create([
-            'image_name' => $fileNameToStore,
-            'image_path' => 'storage/files'
+            'image_name' =>  $fileNameToStore,
+            'image_path' => 'storage/files',
+            'type'       =>  $this->ImageType($request , 'image')    //ImageType is a trait that is defined in TimeTrait and determines type of image. it is "o" => ordinary or  "b" => banner based on size of image
             ]);
        }
-    //    else
-    //    {
-    //        $fileNameToStore = 'noimage.jpg';
-    //    }
+
 
         return redirect()->route('admin.files.index')->with('status', 'محصول جدید با موفقیت اضافه شد.');
     }
@@ -126,7 +125,8 @@ class FileController extends Controller
 
            $file->images()->create([
             'image_name' => $fileNameToStore,
-            'image_path' => 'storage/files'
+            'image_path' => 'storage/files',
+            'type'       =>  $this->ImageType($request , 'image')    //ImageType is a trait that is defined in TimeTrait and determines type of image. it is "o" => ordinary or  "b" => banner based on size of image
             ]);
        }
 

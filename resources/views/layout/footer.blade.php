@@ -6,7 +6,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="info-footer">
                         <div class="info__logo">
-                            <img src="images/trans1.png" alt="footer logo">
+                            <img src="{{asset('images/trans1.png')}}" alt="footer logo">
                         </div>
                         <p class="info--text">Bevedel یک بستر با محتوای آموزشی در اختیار تمام علاقمندان به دنیای برنامه نویسی ارائه داده است.</p>
                         <ul class="info-contact">

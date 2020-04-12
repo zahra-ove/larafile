@@ -4,11 +4,12 @@
             <div class="owl-carousel owl-theme  mt-4">
                 @foreach($topsoldFiles as $file)
                     <div class="item">
-                        <div class="card mt-3">
-                            <img src="{{asset($file->images()->first()->image_path.'/'.$file->images()->first()->image_name)}}" alt="product image" class="card-img-top">
+                        <div class="card mt-3" style="height:75vh;">
+                            {{-- <img src="{{asset($file->images()->first()->image_path.'/'.$file->images()->first()->image_name)}}" alt="product image" class="card-img-top"> --}}
+                            <img src="{{asset($file->images()->where('type', 'o')->first()->image_path.'/'.$file->images()->where('type', 'o')->first()->image_name)}}" alt="product image" class="card-img-top">
                             <div class="card-body">
-                                <p>{{$file->file_name}}</p>
-                                <p>{{$file->description}}</p>
+                                <a href="{{route('showProduct', ['id' => $file->id])}}"><p>{{$file->file_name}}</p></a>
+                                <small>{!!$file->short_description!!}</small>
                             </div>
                         </div>
                     </div>

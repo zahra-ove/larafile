@@ -35,6 +35,7 @@ class StoreFileRequest extends FormRequest
             'file_size'       =>  'nullable|string',
             'time'            =>  'nullable|string',
             'type_id'         =>  'nullable|numeric',
+            'description'     =>  'nullable|string',
             'image'           =>  'nullable|image|max:2049'
         ];
     }

@@ -16,7 +16,7 @@ class FrontController extends Controller
     {
         $files = File::all();    //retrieve all files
         $newFiles = File::orderBy('created_at', 'desc')->limit(8)->get();  //retrieve 5 latest product that is added to website
-        
+
         $topTenSoldFileId = Orderable::topTenSeller('File');   //finding top ten sold files in last three months based on file Id
         $topsoldFiles = File::findMany($topTenSoldFileId);  //finding top ten sold files in last three months based on file object
 
@@ -25,5 +25,12 @@ class FrontController extends Controller
                                     'newFiles'     =>  $newFiles,
                                     'topsoldFiles' =>  $topsoldFiles
                                 ]);
+    }
+
+
+    public function showFile($id)
+    {
+        $file = File::find($id);    //finding specified file based on Id
+        return view('product', compact('file'));
     }
 }

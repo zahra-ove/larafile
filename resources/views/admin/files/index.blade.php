@@ -18,7 +18,6 @@
                             <th>کد محصول</th>
                             <th>نام محصول</th>
                             <th>قیمت به تومان</th>
-                            <th>توضیحات</th>
                             <th>آدرس ذخیره فایل</th>
                             <th>تعداد دانلود</th>
                             <th>تعداد بازدید</th>
@@ -37,7 +36,6 @@
                                 <td>{{$file->file_code}}</td>
                                 <td>{{$file->file_name}}</td>
                                 <td>{{$file->price}}</td>
-                                <td>{{$file->description}}</td>
                                 <td>{{$file->file_path}}</td>
                                 <td>{{$file->download_count}}</td>
                                 <td>{{$file->view_count}}</td>

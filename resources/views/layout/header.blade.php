@@ -9,7 +9,7 @@
                 <div class="col-lg-3 col-md-3 col-6 align-middle">
                     <div class="logo">
                         <a href="{{url('/')}}">
-                            <img src="images/bevedel_logo3.png" alt="logo image" class="img-fluid">
+                            <img src="{{asset('images/bevedel_logo3.png')}}" alt="logo image" class="img-fluid">
                         </a>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
 
                                                 <li>
                                                     <a href="{{route('user.index')}}">
-                                                        <span class="lnr lnr-user"></span>پروفایل </a>
+                                                        <span class="lnr lnr-user"></span>پروفایل</a>
                                                 </li>
 
                                                 <li>
@@ -67,7 +67,7 @@
 
                                                 <li>
                                                     <a href="dashboard-setting.blade.php">
-                                                        <span class="lnr lnr-cog"></span> تنظیمات</a>
+                                                        <span class="lnr lnr-cog"></span>تنظیمات</a>
                                                 </li>
 
                                                 <li>
@@ -76,7 +76,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="favourites.blade.php">
-                                                        <span class="lnr lnr-heart"></span> علاقه مندی ها </a>
+                                                        <span class="lnr lnr-heart"></span> علاقه مندی ها</a>
                                                 </li>
                                                 <li>
                                                     <a href="dashboard-add-credit.blade.php">
@@ -88,7 +88,7 @@
                                                 </li>
                                                 <li>
                                                     <a href="dashboard-upload.blade.php">
-                                                        <span class="lnr lnr-upload"></span>آپلود ایتم </a>
+                                                        <span class="lnr lnr-upload"></span>آپلود ایتم</a>
                                                 </li>
                                                 <li>
                                                     <a href="dashboard-manage-item.blade.php">

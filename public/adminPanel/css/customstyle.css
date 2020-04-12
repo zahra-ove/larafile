@@ -20,3 +20,11 @@ body
     font-weight: 400;
     font-size: 15px;
 }
+
+/* ckeditor 5 ---> changing height of editor */
+.ck-editor__editable_inline {
+    min-height: 200px;
+}
+
+
+
