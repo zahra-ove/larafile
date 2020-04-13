@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 use App\Models\File;
 use App\Models\Orderable;
-
+use App\Models\View;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
@@ -20,17 +21,41 @@ class FrontController extends Controller
         $topTenSoldFileId = Orderable::topTenSeller('File');   //finding top ten sold files in last three months based on file Id
         $topsoldFiles = File::findMany($topTenSoldFileId);  //finding top ten sold files in last three months based on file object
 
+        // finding top 10 popular products based on click count
+        $popularFilesId = View::mostviewedfiles()->pluck('viewable_id');
+        // return $popularFilesId;
+        $popularFiles = File::findMany($popularFilesId);  //finding top ten popular files in last three months based on file ID
+
         return view('index')->with([
                                     'files'        =>  $files,
                                     'newFiles'     =>  $newFiles,
-                                    'topsoldFiles' =>  $topsoldFiles
+                                    'topsoldFiles' =>  $topsoldFiles,
+                                    'popularFiles' =>  $popularFiles
                                 ]);
     }
 
 
     public function showFile($id)
     {
-        $file = File::find($id);    //finding specified file based on Id
+
+        #finding specified file based on Id
+        $file = File::find($id);
+
+        #for every click on each product, fill views table
+        //start ------------------------------ //
+        if(Auth::check())
+        {
+            $id = Auth::id();
+            $file->views()->create([
+                'user_id' => $id
+            ]);
+        }
+        else
+        {
+            $file->views()->create([]);
+        }
+        //end ---------------------------------- //
+
         return view('product', compact('file'));
     }
 }

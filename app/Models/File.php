@@ -39,12 +39,17 @@ class File extends Model
         return $this->morphToMany('App\Models\Order', 'orderable');
     }
 
+    #one to many polymorphic relationship between files table and views table
+    public function views()
+    {
+        return $this->morphMany('App\Models\View', 'viewable');
+    }
 
-    /*======================================================================
-    |                                                                       |
-    |            ************** Other Functions **************              |
-    |                                                                       |
-    ========================================================================*/
+/*======================================================================
+|                                                                       |
+|            ************** Other Functions **************              |
+|                                                                       |
+========================================================================*/
     public function getShortDescriptionAttribute()
     {
         return Str::words($this->description, 20, '...');

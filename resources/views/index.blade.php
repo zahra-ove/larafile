@@ -84,79 +84,10 @@ START HERO AREA
 END HERO AREA
 =================================-->
 
-<!--================================
-START FEATURE AREA
-=================================-->
-{{-- <section class="features section--padding dir-rtl">
-    <!-- start container -->
-    <div class="container">
-        <!-- start row -->
-        <div class="row">
-            <!-- start search-area -->
-            <div class="col-lg-4 col-md-6">
-                <div class="feature">
-                    <div class="feature__img">
-                        <img src="images/new/feature1.png" alt="feature">
-                    </div>
-                    <div class="feature__title">
-                        <h3>بهترین تحقیق UX</h3>
-                    </div>
-                    <div class="feature__desc">
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                            است. </p>
-                    </div>
-                </div>
-                <!-- end /.feature -->
-            </div>
-            <!-- end /.col-lg-4 col-md-6 -->
-
-            <!-- start search-area -->
-            <div class="col-lg-4 col-md-6">
-                <div class="feature">
-                    <div class="feature__img">
-                        <img src="images/new/feature2.png" alt="feature">
-                    </div>
-                    <div class="feature__title">
-                        <h3>کاملا پاسخگو</h3>
-                    </div>
-                    <div class="feature__desc">
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                            است. </p>
-                    </div>
-                </div>
-                <!-- end /.feature -->
-            </div>
-            <!-- end /.col-lg-4 col-md-6 -->
-
-            <!-- start search-area -->
-            <div class="col-lg-4 col-md-6">
-                <!-- end /.col-lg-4 col-md-6 -->>
-                <div class="feature">
-                    <div class="feature__img">
-                        <img src="images/new/feature3.png" alt="feature">
-                    </div>
-                    <div class="feature__title">
-                        <h3>خرید و فروش به راحتی</h3>
-                    </div>
-                    <div class="feature__desc">
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                            است. </p>
-                    </div>
-                </div>
-                <!-- end /.feature -->
-            </div>
-        </div>
-        <!-- end /.row -->
-    </div>
-    <!-- end /.container -->
-</section> --}}
-<!--================================
-END FEATURE AREA
-=================================-->
 
 
 <!--================================
-START Newest PRODUCT AREA    section--padding
+START Newest PRODUCT AREA
 =================================-->
 <section class="featured-products bgcolor sectionPadding">
     <!-- start /.container -->
@@ -177,17 +108,16 @@ START Newest PRODUCT AREA    section--padding
     </div>
 
     <!-- start new products -->
-    {{-- @include('newProducts', $newFiles) --}}
     @include('subProducts', ['productsArray' => $newFiles])
     <!-- end new products -->
 </section>
 <!--================================
-END FEATURED PRODUCT AREA
+END Newest PRODUCT AREA
 =================================-->
 
 
 <!--================================
-START Top 10 selling Files in last 3 months     section--padding
+START Top 10 selling Files in last 3 months
 =================================-->
 <section class="featured-products bgcolor sectionPadding">
     <!-- start /.container -->
@@ -208,9 +138,7 @@ START Top 10 selling Files in last 3 months     section--padding
     </div>
 
     <!-- start top ten selling files -->
-    {{-- @include('topSoldFiles', $topsoldFiles) --}}
     @include('subProducts', ['productsArray' => $topsoldFiles])
-
     <!-- end top ten selling files -->
 </section>
 <!--================================
@@ -218,6 +146,35 @@ END Top 10 selling Files in last 3 months
 =================================-->
 
 
+
+<!--================================
+START Popular Files in last 3 months based on click count
+=================================-->
+<section class="featured-products bgcolor sectionPadding">
+    <!-- start /.container -->
+    <div class="container">
+        <!-- start row -->
+        <div class="row">
+            <!-- start col-md-12 -->
+            <div class="col-md-12">
+                <div class="product-title-area ">
+                    <div class="product__title">
+                        <h4>محبوب ترین محصولات <small class="text-muted text-sm">(3 ماه اخیر)</small></h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end /.col-md-12 -->
+        </div>
+        <!-- end /.row -->
+    </div>
+
+    <!-- start top ten popular files -->
+    @include('subProducts', ['productsArray' => $popularFiles])
+    <!-- end top ten popular files -->
+</section>
+<!--================================
+END Popular Files in last 3 months based on click count
+=================================-->
 
 <!--================================
 START COUNTER UP AREA
