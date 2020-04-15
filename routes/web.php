@@ -29,6 +29,8 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('auth', '
 ========================================================================*/
 Route::get('/', 'Frontend\FrontController@index')->name('home');
 Route::get('/product/{id}', 'Frontend\FrontController@showFile')->name('showProduct');
+Route::post('/search', 'Frontend\FrontController@search')->name('search');
+Route::get('/category/{id}/products', 'Frontend\FrontController@categoryBasedProducts')->name('categoryBasedProducts');
 
 
 

@@ -36,13 +36,24 @@ a.x {
 .bg-darkBlue{
     background-color: rgb(5, 2, 71);
 }
+.bg-lightPurple{
+    background-color: #d8b9c3;
+}
 
+.bg-darkBlue{
+    background-color: #400082;
+}
+.bg-lightGray{
+    background-color: #F5F5F5;
+}
 /* text color */
 .whiteText{
     color: white;
 }
 
-
+.floralwhiteText{
+    color: floralwhite;
+}
 /* Icons styling */
 .panel_icon{
     position: relative;

@@ -8,7 +8,7 @@
                             {{-- <img src="{{asset($file->images()->first()->image_path.'/'.$file->images()->first()->image_name)}}" alt="product image" class="card-img-top"> --}}
                             <img src="{{asset($file->images()->where('type', 'o')->first()->image_path.'/'.$file->images()->where('type', 'o')->first()->image_name)}}" alt="product image" class="card-img-top">
                             <div class="card-body">
-                                <a href="{{route('showProduct', ['id' => $file->id])}}"><p>{{$file->file_name}}</p></a>
+                                <a href="{{route('showProduct', ['id' => $file->id])}}"><p class="card-text text-center">{{$file->file_name}}</p></a>
                                 <small>{!!$file->short_description!!}</small>
                             </div>
                         </div>

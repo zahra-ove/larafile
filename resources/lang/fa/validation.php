@@ -86,7 +86,8 @@ return [
     'min'                  => [
         'numeric' => ':attribute نباید کوچکتر از :min باشد',
         'file'    => ':attribute نباید کوچکتر از :min کیلوبایت باشد',
-        'string'  => ':attribute نباید کمتر از :min کاراکتر داشته باشد',
+        // 'string'  => ':attribute نباید کمتر از :min کاراکتر داشته باشد',
+        'string'  => ':attribute باید بیشتر از :min کاراکتر داشته باشد',
         'array'   => ':attribute نباید کمتر از :min آیتم داشته باشد',
     ],
     'not_in'               => ':attribute انتخاب شده، معتبر نیست',
@@ -175,6 +176,7 @@ return [
         'terms'                 => 'شرایط',
         'province'              => 'استان',
         'body'                  => 'متن',
-        'message'               => 'پیغام'
+        'message'               => 'پیغام',
+        'search'               => 'عبارت مورد جستجو'
     ],
 ];

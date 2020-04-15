@@ -317,18 +317,11 @@
                                     <a href="#">دسته بندی ها </a>
                                     <div class="dropdowns dropdown--menu">
                                         <ul>
-                                            <li>
-                                                <a href="category-grid.blade.php">برنامه نویسی وب</a>
-                                            </li>
-                                            <li>
-                                                <a href="category-grid.blade.php">برنامه نویسی اندروید</a>
-                                            </li>
-                                            <li>
-                                                <a href="category-grid.blade.php">گرافیک</a>
-                                            </li>
-                                            <li>
-                                                <a href="category-grid.blade.php">الگوریتم نویسی</a>
-                                            </li>
+                                            @foreach($categories as $category)
+                                                <li>
+                                                    <a href="{{route('categoryBasedProducts', ['id' => $category->id])}}">{{$category->name}}</a>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                 </li>

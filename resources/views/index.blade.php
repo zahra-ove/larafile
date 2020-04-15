@@ -31,7 +31,7 @@ START HERO AREA
                         <!-- start .hero__btn-area-->
                         <div class="hero__btn-area">
                             <a href="all-products.blade.php" class="btn btn--round btn--lg">مشاهده تمام محصولات</a>
-                            <a href="all-products.blade.php" class="btn btn--round btn--lg">محصولات محبوب</a>
+                            <a href="#popularFiles" class="btn btn--round btn--lg">محصولات محبوب</a>
                         </div>
                         <!-- end .hero__btn-area-->
                     </div>
@@ -55,20 +55,30 @@ START HERO AREA
                 <div class="col-sm-12">
                     <!-- start .search_box -->
                     <div class="search_box">
-                        <form action="#">
-                            <input type="text" class="text_field" placeholder="جستجو در محصولات ...">
+                        <form action="{{route('search')}}"  method="POST">
+                            @csrf
+
+                            <input type="text" name="search" class="text_field" placeholder="جستجو در محصولات ...">
                             <div class="search__select select-wrap">
-                                <select name="category" class="select--field" id="blah">
-                                    <option value="">همه دسته بندی ها</option>
-                                    <option value="">PSD</option>
-                                    <option value="".blade.php</option>
-                                    <option value="">ورد پرس</option>
-                                    <option value="">همه دسته بندی ها</option>
+                                <select name="category_id" class="select--field" id="blah">
+                                    @foreach($categories as $category)
+
+                                        @if($loop->first)
+                                            <option value="">همه گروه ها</option>
+                                        @else
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endif
+
+                                    @endforeach
                                 </select>
                                 <span class="lnr lnr-chevron-down"></span>
                             </div>
                             <button type="submit" class="search-btn btn--lg">جستجو</button>
                         </form>
+
+                        @error('search')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <!-- end ./search_box -->
                 </div>
@@ -150,7 +160,7 @@ END Top 10 selling Files in last 3 months
 <!--================================
 START Popular Files in last 3 months based on click count
 =================================-->
-<section class="featured-products bgcolor sectionPadding">
+<section class="featured-products bgcolor sectionPadding" id="popularFiles">
     <!-- start /.container -->
     <div class="container">
         <!-- start row -->
