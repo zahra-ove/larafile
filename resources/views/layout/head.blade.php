@@ -5,6 +5,8 @@
 <meta name="description" content="MartPlace - Complete Online Multipurpose Marketplace.blade.php Template">
 <meta name="keywords" content="marketplace, easy digital download, digital product, digital,.blade.php5">
 
+{{-- meta tag for csrf token --}}
+@yield('meta_csrf', '')
 
 <title>Bevedel Academy</title>
 
@@ -21,9 +23,16 @@
 <link rel="stylesheet" href="{{asset('css/carousel/owl.carousel.css')}}" >
 <link rel="stylesheet" href="{{asset('css/carousel/owl.theme.default.css')}}">
 {{-- end carousel css library --}}
+
+{{-- start rateyo css library --}}
+<link rel="stylesheet" href="{{asset('css/rateyo/jquery.rateyo.css')}}">
+{{-- end rateyo css library --}}
+
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/myStyle.css')}}">
 <!-- endinject -->
 
 <!-- Favicon -->
 <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon3.png')}}">
+
+

@@ -31,6 +31,7 @@ Route::get('/', 'Frontend\FrontController@index')->name('home');
 Route::get('/product/{id}', 'Frontend\FrontController@showFile')->name('showProduct');
 Route::post('/search', 'Frontend\FrontController@search')->name('search');
 Route::get('/category/{id}/products', 'Frontend\FrontController@categoryBasedProducts')->name('categoryBasedProducts');
+Route::post('/ratings', 'Frontend\FrontController@receivedRating')->name('rate')->middleware('auth');
 
 
 

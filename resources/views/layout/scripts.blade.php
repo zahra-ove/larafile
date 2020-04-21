@@ -21,5 +21,6 @@
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/map.js')}}"></script>
 <script src="{{asset('css/carousel/owl.carousel.min.js')}}"></script>
+<script src="{{asset('js/rateyo/jquery.rateyo.js')}}"></script>
 <script src="{{asset('js/myJS.js')}}"></script>
 

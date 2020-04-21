@@ -68,6 +68,11 @@ class User extends Authenticatable
         return $this->morphOne('App\Models\Image', 'imageable');
     }
 
+    # one to many relationship between users and rates tables
+    public function rates()
+    {
+        return $this->hasMany('App\Models\Rate');
+    }
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |

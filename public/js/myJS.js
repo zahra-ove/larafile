@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
     $(".y").click(function() {
         $(".z").hide(500);
     });
@@ -38,7 +39,7 @@ $(document).ready(function() {
     });
 
 
-//carousel
+//------------------------- START of carousel ---------------------------//
     $('.owl-carousel').owlCarousel({
         rtl: true,
         loop: true,
@@ -58,8 +59,71 @@ $(document).ready(function() {
             }
         }
     })
+//------------------------- END of carousel ---------------------------//
+
+
+
+//------------------------- START of star rating plugin ---------------------------//
+    var rateType = $('#info').data("type");
+    var rateId = $('#info').data("id");
+
+$("#rateyo").rateYo({
+    // rating: 3.6,
+    rating: $("#avgrate").data('avg'),
+    starWidth: "20px",
+    onSet: function (rating, rateYoInstance) {
+        // console.log(rating);
+        // console.log(rateType);
+        // console.log(rateId);
+
+        sendRating(rating, rateType, rateId);
+    }
 });
 
 
 
 
+//functions defined for star rating system
+function sendRating(rate, type, id)
+{
+
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/ratings',
+        method: "POST",
+        data:
+            {
+                'rateNum' : rate,
+                'rateType': type,
+                'id': id
+            },
+        success: function(data)
+        {
+
+
+            var countRate = data.countRate;
+            var avgRate   = data.avgRate;
+            var message   = data.message;
+            var userRate   = data.userRate;
+
+            console.log(avgRate);
+            $('#avgrate').html(`${avgRate} ستاره`);
+            $('#countrate').html(`${countRate} رای`);
+            $('#userRate').html(`${userRate} ستاره`);
+        },
+        error: function(data)
+        {
+            var errors = data.responseJSON;
+            console.log(errors);
+        }
+    });
+
+}
+
+//------------------------- END of star rating plugin ---------------------------//
+
+
+});  //end of DOM

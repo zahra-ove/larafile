@@ -1,5 +1,11 @@
 @extends('layout.master')
 
+
+{{-- this meta tag is needed when using ajax request, because it needed csrf and I dont use form so based on laravel documentation we can use this meta tag for specifying csrf_token --}}
+@section('meta_csrf')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
 @section('content')
 
 <!-- Start Header section -->
@@ -55,24 +61,7 @@
         <!-- Start Left section -->
         <div class="col-md-4">
 
-            <div class="card">
-                <div class="card-header font-weight-bolder">امتیاز به این دوره</div>
-                <div class="card-body">
-                    <div class="container">
-                        <div class="starrating d-flex justify-content-center ">
-                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 star"></label>
-                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 star"></label>
-                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 star"></label>
-                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 star"></label>
-                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star"></label>
-                        </div>
-                  </div>
-                  <div class="container">
-                      <small style="color:red;">میانگین امتیارها:<span> </span> </small>
-                      <small style="color:red">رای<span> </span>از</small>
-                  </div>
-                </div>
-            </div>
+            @include('fiveStarRating', ['type' => "File", 'id' => $file->id])
 
             <div class="card">
                 <div class="card-header font-weight-bolder">اطلاعات دوره</div>

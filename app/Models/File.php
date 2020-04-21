@@ -39,12 +39,17 @@ class File extends Model
         return $this->morphToMany('App\Models\Order', 'orderable');
     }
 
-    #one to many polymorphic relationship between files table and views table
+    # one to many polymorphic relationship between files table and views table
     public function views()
     {
         return $this->morphMany('App\Models\View', 'viewable');
     }
 
+    # one to many polymorphic relationship
+    public function rates()
+    {
+        return $this->morphMany('App\Models\Rate', 'rateble');
+    }
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |

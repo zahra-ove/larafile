@@ -78,26 +78,62 @@ a.x {
 
 
 /* START starrating  */
-.starrating > input {display: none;}  /* Remove radio buttons */
+.zz{
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+}
+.zz > input {display: none;}  /* Remove radio buttons */
 
-.starrating > label:before {
+.zz > label:before {
   content: "\f005"; /* Star */
-  margin: 2px;
+  /* margin: 2px; */
+  margin-top: 2px;
+  margin-right: 3px;
   font-size: 1em;
   font-family: FontAwesome;
-  display: inline-block;
+  /* display: inline-block; */
 }
 
-.starrating > label
+.zz > label
 {
   color: #222222; /* Start color when not clicked */
 }
 
-.starrating > input:checked ~ label
+.zz > input:checked ~ label
 { color: #ffca08 ; } /* Set yellow color when star checked */
 
-.starrating > input:hover ~ label
+.zz > input:hover ~ label
 { color: #ffca08 ;  } /* Set yellow color when star hover */
 /* END starrating  */
 
+.starrating
+{
+    position: relative;
+    display: inline-block;
 
+}
+
+.star-inner
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    /* overflow: hidden; */
+
+}
+
+.star-inner > input {display: none;}
+/* .star-inner > input {display: none;}  Remove radio buttons */
+.star-inner> label:before {
+    content: "\f005  \f005  \f005  \f005  \f005"; /* Star */
+    color: #ffca08 ;
+    margin-top: 2px;
+    margin-right: 3px;
+    font-size: 1em;
+    font-family: FontAwesome;
+
+
+  }

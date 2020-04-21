@@ -19,6 +19,12 @@ class Episode extends Model
     }
 
 
+    # one to many polymorphic relationship
+    public function rates()
+    {
+        return $this->morphMany('App\Models\Rate', 'rateble');
+    }
+
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |

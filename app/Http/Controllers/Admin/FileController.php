@@ -56,6 +56,9 @@ class FileController extends Controller
      */
     public function store(StoreFileRequest $request)
     {
+
+
+
        $data = collect($request->validated())->forget('image')->toArray();
        $file = File::create($data);
 
