@@ -14,7 +14,7 @@ use App\Models\Rate;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SearchRequest;
-
+use RealRashid\SweetAlert\Facades\Alert;   //sweet alert Facade
 
 class FrontController extends Controller
 {
@@ -52,7 +52,7 @@ class FrontController extends Controller
         $file = File::find($id);
 
 
-        // count rate number
+        // count rate number fot this file
         $rateCount = Rate::CountRate('App\Models\File', $id);
 
         // if there is at least one record then continue to query the results
@@ -79,12 +79,19 @@ class FrontController extends Controller
 
             if($rateCount)
             {
-                //user rate to this file
+                //search if user has rated to this file or not
                 $q = Rate::where('user_id',$userId)
                                 ->where('rateble_type', 'App\Models\File')
                                 ->where('rateble_id', $id)
-                                ->get();
-                $userRate = $q->pluck('star')->first();
+                                ->fisrt();
+                if($q === null)
+                {
+                    $userRate = null;   //if user has not rated to this file then return null
+                }
+                else
+                {
+                    $userRate = $q->pluck('star')->first();   //if user has rated to this file, then return user's rate
+                }
             }
             else
             {
@@ -149,53 +156,68 @@ class FrontController extends Controller
         $rateble_id = $request->id;
         $rateble_type = 'App\Models\\' . ucfirst($request->rateType);
         $star = $request->rateNum;
-        $user_id = Auth::id();
-
         $message = '';
 
-        // check if user has retaed to this file,article,episode in the past
-        $result = Rate::where('rateble_id', $rateble_id)
-                        ->where('rateble_type', $rateble_type)
-                        ->where('user_id', $user_id)
-                        ->exists();
-
-
-        if($result)   //if current user(logged in user) has rated to this file,article,episode in the past, then update her rating in rates table
+        //check if user is logged in or not
+        if(Auth::check())
         {
-             Rate::where('rateble_id', $rateble_id)
+            $user_id = Auth::id();   //if user is logged in then return user's Id
+            // check if user has retaed to this file,article,episode in the past
+            $result = Rate::where('rateble_id', $rateble_id)
                             ->where('rateble_type', $rateble_type)
                             ->where('user_id', $user_id)
-                            ->update(['star'=> $star]);
+                            ->exists();
 
 
-            $avgRate = Rate::AverageRate($rateble_type, $rateble_id);  //recalculate average rate for specified file,episode,article after updating the user's rate
-            $countRate = Rate::CountRate($rateble_type, $rateble_id); //number of rates for this specific item
+            if($result)   //if current user(logged in user) has rated to this file,article,episode in the past, then update her rating in rates table
+            {
+                Rate::where('rateble_id', $rateble_id)
+                                ->where('rateble_type', $rateble_type)
+                                ->where('user_id', $user_id)
+                                ->update(['star'=> $star]);
 
-            $message = 'امتیاز شما به روز رسانی شد.';
+
+                $avgRate = Rate::AverageRate($rateble_type, $rateble_id);  //recalculate average rate for specified file,episode,article after updating the user's rate
+                $countRate = Rate::CountRate($rateble_type, $rateble_id); //number of rates for this specific item
+
+                Alert::warning('Warning Title', 'امتیاز شما به روز رسانی شد');  //if user is not logged in then return alert message to login ot resiter
+
+                $message = 'امتیاز شما به روز رسانی شد.';
+            }
+            else // if current user does not have any rate for this file or etc,.. then save her rating.
+            {
+                Rate::create([
+                    'rateble_id'   =>  $rateble_id,
+                    'rateble_type' =>  $rateble_type,
+                    'user_id'      =>  $user_id,
+                    'star'         =>  $star
+                ]);
+
+                $avgRate = Rate::AverageRate($rateble_type, $rateble_id);   //recalculate average rate for specified file,episode,article after adding the user's rate
+                $countRate = Rate::CountRate($rateble_type, $rateble_id);   //number of rates for this specific item
+
+                Alert::warning('Warning Title', 'امتیاز شما با موفقیت ثبت شد');  //if user is not logged in then return alert message to login ot resiter
+                $message = 'امتیاز شما با موفقیت ثبت شد.';
+            }
+
+            return response()->json([
+                                        'avgRate'   => $avgRate,
+                                        'countRate' => $countRate,
+                                        'userRate'  => $star,
+                                        'message'   => $message
+                                    ]);
+
         }
-        else // if current user does not have any rate for this file or etc,.. then save her rating.
+        else  // if user is not logged in then return alert message that signout or signin is required for rating
         {
-            Rate::create([
-                'rateble_id'   =>  $rateble_id,
-                'rateble_type' =>  $rateble_type,
-                'user_id'      =>  $user_id,
-                'star'         =>  $star
-            ]);
-
-            $avgRate = Rate::AverageRate($rateble_type, $rateble_id);   //recalculate average rate for specified file,episode,article after adding the user's rate
-            $countRate = Rate::CountRate($rateble_type, $rateble_id);   //number of rates for this specific item
-
-            $message = 'امتیاز شما با موفقیت ثبت شد.';
-        }
-
-        return response()->json([
-                                    'avgRate'   => $avgRate,
-                                    'countRate' => $countRate,
-                                    'userRate'  => $star,
+            Alert::warning('Warning Title', 'برای ثبت امتیاز، نیاز هست که در سایت ثبت نام کنید');  //if user is not logged in then return alert message to login ot resiter
+            return response()->json([
+                                    'avgRate'   => null,
+                                    'countRate' => null,
+                                    'userRate'  => null,
                                     'message'   => $message
                                 ]);
-
-
+        }
 
     }
 

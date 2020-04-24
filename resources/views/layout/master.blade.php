@@ -29,9 +29,13 @@ START FOOTER AREA
 END FOOTER AREA
 =================================-->
 
-<!--js links-->
+    <!--js links-->
 
     @include('layout.scripts')
+
+    <!--sweet alert -->
+    {{-- @include('sweetalert::alert') --}}
+
 <!-- end of js links -->
 </body>
 

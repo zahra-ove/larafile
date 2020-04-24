@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <!--================================
 START HERO AREA
 =================================-->
@@ -189,7 +190,7 @@ END Popular Files in last 3 months based on click count
 <!--================================
 START COUNTER UP AREA
 =================================-->
-<section class="counter-up-area bgimage dir-rtl">
+{{-- <section class="counter-up-area bgimage dir-rtl">
     <div class="bg_image_holder">
         <img src="images/new/countbg.jpg" alt="">
     </div>
@@ -223,7 +224,7 @@ START COUNTER UP AREA
         <!-- end /.col-md-12 -->
     </div>
     <!-- end /.container -->
-</section>
+</section> --}}
 <!--================================
 END COUNTER UP AREA
 =================================-->
@@ -363,7 +364,7 @@ END COUNTER UP AREA
 <!--================================
 START SELL BUY
 =================================-->
-<section class="proposal-area dir-rtl">
+{{-- <section class="proposal-area dir-rtl">
 
     <!-- start container-fluid -->
     <div class="container-fluid">
@@ -410,7 +411,7 @@ START SELL BUY
         </div>
     </div>
     <!-- start container-fluid -->
-</section>
+</section> --}}
 <!--================================
 END SELL BUY
 =================================-->

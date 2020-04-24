@@ -217,24 +217,24 @@
         });
     }
 
-
+//------------------ I commented this lines -------------------------------------------//
     /* featured product slider */
-    var $featuredProd = $('.prod-slider1');
-    $featuredProd.owlCarousel({
-        items: 1,
-        autoplay: false,
-        autoplaySpeed: 1000
+    // var $featuredProd = $('.prod-slider1');
+    // $featuredProd.owlCarousel({
+    //     items: 1,
+    //     autoplay: false,
+    //     autoplaySpeed: 1000
 
-    });
-    customTrigger('.product__slider-nav .nav_right', '.product__slider-nav .nav_left', $featuredProd);
+    // });
+    // customTrigger('.product__slider-nav .nav_right', '.product__slider-nav .nav_left', $featuredProd);
 
 
-    var $featuredProd2 = $('.prod-slider2');
-    $featuredProd2.owlCarousel({
-        items: 1,
-        autoplay: false
-    });
-    customTrigger('.prod_slide_prev', '.prod_slide_next', $featuredProd2);
+    // var $featuredProd2 = $('.prod-slider2');
+    // $featuredProd2.owlCarousel({
+    //     items: 1,
+    //     autoplay: false
+    // });
+    // customTrigger('.prod_slide_prev', '.prod_slide_next', $featuredProd2);
 
 
     $('.testimonial-slider').slick({
@@ -257,70 +257,70 @@
 
 
     /* newest product slider */
-    var productSlider = $('.product_slider');
-    productSlider.owlCarousel({
-        items: 3,
-        margin: 30,
-        rtl:1,
-        responsive: {
-            0: {
-                items: 1
-            },
-            768: {
-                items: 2
-            },
-            992: {
-                items: 3
-            }
-        }
-    });
+    // var productSlider = $('.product_slider');
+    // productSlider.owlCarousel({
+    //     items: 3,
+    //     margin: 30,
+    //     rtl:1,
+    //     responsive: {
+    //         0: {
+    //             items: 1
+    //         },
+    //         768: {
+    //             items: 2
+    //         },
+    //         992: {
+    //             items: 3
+    //         }
+    //     }
+    // });
 
     /* follow feed slider */
-    customTrigger('.follow_feed_nav .nav_right', '.follow_feed_nav .nav_left', productSlider);
+    // customTrigger('.follow_feed_nav .nav_right', '.follow_feed_nav .nav_left', productSlider);
 
 
     /* partners slider */
-    $('.partners').owlCarousel({
-        items: 5,
-        autoplay: true,
-        rtl:0,
-        responsive: {
-            0: {
-                items: 1
-            },
-            480: {
-                items: 2
-            },
-            768: {
-                items: 3
-            },
-            992: {
-                items: 5
-            }
-        }
-    });
+    // $('.partners').owlCarousel({
+    //     items: 5,
+    //     autoplay: true,
+    //     rtl:0,
+    //     responsive: {
+    //         0: {
+    //             items: 1
+    //         },
+    //         480: {
+    //             items: 2
+    //         },
+    //         768: {
+    //             items: 3
+    //         },
+    //         992: {
+    //             items: 5
+    //         }
+    //     }
+    // });
 
-
+//-----------------------------------------------------------------------------------------------------------------//
     /* sponsors slider */
-    $('.sponsores').owlCarousel({
-        items: 4,
-        autoplay: true,
-        margin: 30,
-        responsive: {
-            0: {
-                items: 1
-            },
-            480: {
-                items: 2
-            },
-            768: {
-                items: 3
-            },
-            992: {
-                items: 4
-            }
-        }
-    });
+    // $('.sponsores').owlCarousel({
+    //     items: 4,
+    //     autoplay: true,
+    //     margin: 30,
+    //     responsive: {
+    //         0: {
+    //             items: 1
+    //         },
+    //         480: {
+    //             items: 2
+    //         },
+    //         768: {
+    //             items: 3
+    //         },
+    //         992: {
+    //             items: 4
+    //         }
+    //     }
+    // });
 
 
     // this is product preview slider

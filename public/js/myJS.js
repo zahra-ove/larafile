@@ -1,6 +1,16 @@
 $(document).ready(function() {
 
 
+//SweetAlert2 Toast
+// const Toast = Swal.mixin({
+//     toast: true,
+//     position: 'top-end',
+//     showConfirmButton: false,
+//     timer: 1000
+// });
+//
+
+// ---------------------- START user profile -------------------------------//
     $(".y").click(function() {
         $(".z").hide(500);
     });
@@ -37,7 +47,7 @@ $(document).ready(function() {
 
         $('input[name="password_confirmation"]').attr("type", "password");
     });
-
+// ----------------------- END user profile------------------------------//
 
 //------------------------- START of carousel ---------------------------//
     $('.owl-carousel').owlCarousel({
@@ -109,10 +119,17 @@ function sendRating(rate, type, id)
             var message   = data.message;
             var userRate   = data.userRate;
 
-            console.log(avgRate);
-            $('#avgrate').html(`${avgRate} ستاره`);
-            $('#countrate').html(`${countRate} رای`);
-            $('#userRate').html(`${userRate} ستاره`);
+            if(typeof(countRate) != "undefined" && countRate !== null) {
+                console.log(avgRate);
+                $('#avgrate').html(`${avgRate} ستاره`);
+                $('#countrate').html(`${countRate} رای`);
+                $('#userRate').html(`${userRate} ستاره`);
+            }
+
+            // Toast.fire({
+            //     type: 'success',
+            //     title: message
+            // });
         },
         error: function(data)
         {
