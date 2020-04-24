@@ -10,6 +10,8 @@ $(document).ready(function() {
 // });
 //
 
+
+
 // ---------------------- START user profile -------------------------------//
     $(".y").click(function() {
         $(".z").hide(500);
@@ -74,8 +76,24 @@ $(document).ready(function() {
 
 
 //------------------------- START of star rating plugin ---------------------------//
-    var rateType = $('#info').data("type");
-    var rateId = $('#info').data("id");
+
+
+//SweetAlert2 Toast
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 5000,
+    timerProgressBar: true,
+    onOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+
+
+var rateType = $('#info').data("type");
+var rateId = $('#info').data("id");
 
 $("#rateyo").rateYo({
     // rating: 3.6,
@@ -124,12 +142,37 @@ function sendRating(rate, type, id)
                 $('#avgrate').html(`${avgRate} ستاره`);
                 $('#countrate').html(`${countRate} رای`);
                 $('#userRate').html(`${userRate} ستاره`);
+
+                //showing message as sweetalert
+
+                Toast.fire({
+                    icon: 'success',
+                    title: message
+                });
+                // Swal.fire({
+                //     icon: 'success',
+                //     title: 'تبریک!',
+                //     text: message,
+                //   });
+            }
+            else   //calling sweetalert for display related message
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'متاسفم!',
+                    text: message,
+                    footer: '<pre><a href="/register">ثبت نام</a>    <a href="/login">ورود</a></pre>',
+                    showClass: {
+                      popup: 'animated fadeInDown faster'
+                    },
+                    hideClass: {
+                      popup: 'animated fadeOutUp faster'
+                    }
+                  });
             }
 
-            // Toast.fire({
-            //     type: 'success',
-            //     title: message
-            // });
+
+
         },
         error: function(data)
         {
@@ -139,6 +182,8 @@ function sendRating(rate, type, id)
     });
 
 }
+
+
 
 //------------------------- END of star rating plugin ---------------------------//
 

@@ -83,7 +83,7 @@ class FrontController extends Controller
                 $q = Rate::where('user_id',$userId)
                                 ->where('rateble_type', 'App\Models\File')
                                 ->where('rateble_id', $id)
-                                ->fisrt();
+                                ->first();
                 if($q === null)
                 {
                     $userRate = null;   //if user has not rated to this file then return null
@@ -96,6 +96,9 @@ class FrontController extends Controller
             else
             {
                 $userRate = null;
+                // example:
+                // alert()->success('SuccessAlert','Lorem ipsum dolor sit amet.');
+
             }
         }
         else
@@ -152,6 +155,7 @@ class FrontController extends Controller
     //star rating
     public function receivedRating(RatingRequest $request)
     {
+
         // store received request in variables for better understaning
         $rateble_id = $request->id;
         $rateble_type = 'App\Models\\' . ucfirst($request->rateType);
@@ -210,7 +214,7 @@ class FrontController extends Controller
         }
         else  // if user is not logged in then return alert message that signout or signin is required for rating
         {
-            Alert::warning('Warning Title', 'برای ثبت امتیاز، نیاز هست که در سایت ثبت نام کنید');  //if user is not logged in then return alert message to login ot resiter
+            $message = 'برای ثبت امتیازتون لطفا در سایت ثبت نام کنید';
             return response()->json([
                                     'avgRate'   => null,
                                     'countRate' => null,

@@ -26,7 +26,9 @@
 
 {{-- start rateyo css library --}}
 <link rel="stylesheet" href="{{asset('css/rateyo/jquery.rateyo.css')}}">
-{{-- end rateyo css library --}}
+
+{{-- seetalert2 --}}
+<link rel="stylesheet" href="{{asset('css/sweetalert2/sweetalert2.min.css')}}">
 
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link rel="stylesheet" href="{{asset('css/myStyle.css')}}">

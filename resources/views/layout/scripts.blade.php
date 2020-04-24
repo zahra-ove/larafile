@@ -20,7 +20,13 @@
 <script src="{{asset('js/dashboard.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/map.js')}}"></script>
+{{-- owl carousel  --}}
 <script src="{{asset('css/carousel/owl.carousel.min.js')}}"></script>
+{{-- rateYo --}}
 <script src="{{asset('js/rateyo/jquery.rateyo.js')}}"></script>
+{{-- SweetAlert2 --}}
+<script src="{{asset('js/sweetalert2/sweetalert2.all.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+{{-- my custom js code --}}
 <script src="{{asset('js/myJS.js')}}"></script>
 
