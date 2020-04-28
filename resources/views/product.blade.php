@@ -1,5 +1,8 @@
 @extends('layout.master')
 
+@section('title')
+   {{$file->file_name}}
+@endsection
 
 {{-- this meta tag is needed when using ajax request, because it needed csrf and I dont use form so based on laravel documentation we can use this meta tag for specifying csrf_token --}}
 @section('meta_csrf')

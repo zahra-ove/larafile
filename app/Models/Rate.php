@@ -44,7 +44,7 @@ class Rate extends Model
                      ->where('rateble_id', $id)
                      ->selectRaw('CAST(AVG(star) AS DECIMAL(2,1)) AS star_avg')->first()->star_avg;
                      //  ->selectRaw('AVG(CAST(star AS FLOAT)) AS star_avg')->first()->star_avg;
-                    
+
     }
 
 //number of rates for specified item
@@ -54,5 +54,25 @@ class Rate extends Model
                       ->where('rateble_id', $id)
                       ->count();
     }
+
+
+//calculating average star for specified file,episode,article based on $id. $id specifies 'rateble_id' and $type specifies 'rateble_type' taht could be file,episode or article
+public function scopeTotalAverageRate($query, $type)
+{
+    $results =  $query->where('rateble_type', $type)
+                 ->selectRaw('CAST(AVG(star) AS DECIMAL(2,1)) AS star_avg')
+                 ->addSelect('rateble_id')
+                 ->groupby('rateble_id')
+                 ->get();
+
+    // make the query result to an associative array, "rateble_id" as key and "star_avg" as value
+    $fileRate = array();
+    foreach($results as $rate)
+    {
+        $fileRate[$rate['rateble_id']] = $rate['star_avg'];
+    }
+
+    return $fileRate;
+}
 
 }

@@ -186,6 +186,24 @@ function sendRating(rate, type, id)
 
 
 //------------------------- END of star rating plugin ---------------------------//
+$(".test").each(function(){
+    $x = $(this).find('.info').data('avg');
+    console.log($x);
+    console.log("  ");
+
+    $(".rateyo2").rateYo({
+        // rating: 3.6,
+        rating: $(this).find('.info').data('avg'),
+        starWidth: "15px",
+});
+});
+
+// $(".rateyo2").rateYo({
+//         // rating: 3.6,
+//         rating: $(".info").data('avg'),
+//         starWidth: "15px",
+// });
+
 
 
 });  //end of DOM

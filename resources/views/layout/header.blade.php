@@ -327,7 +327,7 @@
                                 </li>
 
                                 <li class="has_megamenu">
-                                    <a href="#">فروشگاه</a>
+                                    <a href="{{route('shop.index')}}">فروشگاه</a>
                                 </li>
 
                                 <li class="has_megamenu">

@@ -50,4 +50,6 @@ Route::patch('user/changePassword/{id}', 'Frontend\UserController@changePassword
 Route::get('/contact', 'Frontend\ContactController@index')->name('contacts.index');    //display contact us page
 Route::post('/contact', 'Frontend\ContactController@store')->name('contacts.store');    //post contact us page to store method
 
+Route::get('/shop', 'Frontend\ShopController@index')->name('shop.index');    //displaying shopping page
+
 

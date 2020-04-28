@@ -184,7 +184,7 @@ class FrontController extends Controller
                 $avgRate = Rate::AverageRate($rateble_type, $rateble_id);  //recalculate average rate for specified file,episode,article after updating the user's rate
                 $countRate = Rate::CountRate($rateble_type, $rateble_id); //number of rates for this specific item
 
-                Alert::warning('Warning Title', 'امتیاز شما به روز رسانی شد');  //if user is not logged in then return alert message to login ot resiter
+                // Alert::warning('Warning Title', 'امتیاز شما به روز رسانی شد');  //if user is not logged in then return alert message to login ot resiter
 
                 $message = 'امتیاز شما به روز رسانی شد.';
             }
@@ -200,7 +200,7 @@ class FrontController extends Controller
                 $avgRate = Rate::AverageRate($rateble_type, $rateble_id);   //recalculate average rate for specified file,episode,article after adding the user's rate
                 $countRate = Rate::CountRate($rateble_type, $rateble_id);   //number of rates for this specific item
 
-                Alert::warning('Warning Title', 'امتیاز شما با موفقیت ثبت شد');  //if user is not logged in then return alert message to login ot resiter
+                // Alert::warning('Warning Title', 'امتیاز شما با موفقیت ثبت شد');  //if user is not logged in then return alert message to login ot resiter
                 $message = 'امتیاز شما با موفقیت ثبت شد.';
             }
 

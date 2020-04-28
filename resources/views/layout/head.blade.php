@@ -8,7 +8,7 @@
 {{-- meta tag for csrf token --}}
 @yield('meta_csrf', '')
 
-<title>Bevedel Academy</title>
+<title>@yield('title', 'Bevedel Academy')</title>
 
 <!-- inject:css -->
 <link rel="stylesheet" href="{{asset('css/animate.css')}}">
