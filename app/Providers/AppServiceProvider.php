@@ -26,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('layout.header', 'App\Http\View\Composers\CategoriesComposer');
+        View::composer('cart.cart-count', 'App\Http\View\Composers\CartsComposer');
     }
 }

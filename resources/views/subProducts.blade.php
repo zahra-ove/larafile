@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 no0-padding">
-            <div class="owl-carousel owl-theme  mt-4">
+            <div class="owl-carousel owl-theme  mt-4" id="owl-one">
                 @foreach($productsArray as $file)
                     <div class="item">
                         <div class="card mt-3" style="height:75vh;">

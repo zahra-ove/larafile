@@ -50,6 +50,12 @@ class File extends Model
     {
         return $this->morphMany('App\Models\Rate', 'rateble');
     }
+
+    # many to many polymorphic relationship between files and carts table
+    public function carts()
+    {
+        return $this->morphToMany('App\Models\Cart', 'cartable');
+    }
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |
@@ -83,6 +89,21 @@ class File extends Model
                         ->orWhere('description', 'LIKE', "%$q%")
                         ->get();
         }
+    }
+
+
+
+/**
+ * finding recommended items for specific product
+ */
+    public static function RecommendedItems($id)
+    {
+        $categoryId = static::where('id',$id)->pluck('category_id')->first();
+
+        return static::where('id', '!=', $id)
+                     ->where('category_id', $categoryId)
+                     ->get();
+
     }
 
 }

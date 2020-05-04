@@ -134,6 +134,48 @@ a.x {
     margin-right: 3px;
     font-size: 1em;
     font-family: FontAwesome;
-
-
   }
+
+/*-------- shopping cart icon -----------*/
+/* .fa-stack{
+    font-size:120%;
+} */
+.fa-stack[data-count]:after{
+  position:absolute;
+  right:0%;
+  top:0%;
+  content: attr(data-count);
+  font-size:30%;
+  padding:.6em;
+  border-radius:999px;
+  line-height:.75em;
+  color: white;
+  color:#D6236D;
+  text-align:center;
+  min-width:2em;
+  font-weight:bold;
+  background: white;
+  border-style:solid;
+}
+.fa-circle {
+  color:#D6236D;
+}
+
+/* .red-cart {
+	color: #D6236D; background:white;
+} */
+/* ----------end shopping cart --------------- */
+#fileAdd2Cart:hover{
+    background-color: darkgreen;
+}
+
+#heart{
+    font-size: 20px;
+}
+
+
+/* shopping cart view */
+.fa-file-export
+{
+    color: darkgray;
+}

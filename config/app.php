@@ -166,7 +166,8 @@ return [
         /*
          * Package Service Providers...
          */
-        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,    //sweetalert package
+        // Darryldecode\Cart\CartServiceProvider::class,             //laravel shopping cart package
 
 
         /*
@@ -230,9 +231,12 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        // sweet alert package
-        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
 
+
+//-------------------- added packages-----------------------------------------
+
+        'Alert' => RealRashid\SweetAlert\Facades\Alert::class,   // sweet alert package
+        // 'Cart' => Darryldecode\Cart\Facades\CartFacade::class,  //laravel shopping cart package
 
     ],
 

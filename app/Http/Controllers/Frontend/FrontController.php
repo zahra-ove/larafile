@@ -51,6 +51,8 @@ class FrontController extends Controller
         #finding specified file based on Id
         $file = File::find($id);
 
+        //finding recommended items for specific product
+        $recommendedItems = File::RecommendedItems($id);
 
         // count rate number fot this file
         $rateCount = Rate::CountRate('App\Models\File', $id);
@@ -111,10 +113,11 @@ class FrontController extends Controller
         //end ---------------------------------- //
 
         return view('product')->with([
-                                        'file'      => $file,
-                                        'avgrate'   => round( $avgrate , 2),
-                                        'rateCount' => $rateCount,
-                                        'userRate'  => $userRate
+                                        'file'              =>    $file,
+                                        'avgrate'           =>    round( $avgrate , 2),
+                                        'rateCount'         =>    $rateCount,
+                                        'userRate'          =>    $userRate,
+                                        'recommendedItems'  =>    $recommendedItems
                                     ]);
     }
 

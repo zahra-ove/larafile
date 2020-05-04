@@ -19,109 +19,113 @@
                 <div class="col-lg-8 offset-lg-1 col-md-9 col-6  v_middle">
                     <!-- start .author-area -->
                     <div class="author-area">
+                        {{-- shopping cart icon --}}
+                        @include('cart.cart-count')
 
                         @if (Route::has('login'))
-                                @auth
-                                    <!--start .author__notification_area -->
-
-                                    <!--start .author-author__info-->
-                                    <div class="author-author__info inline has_dropdown">
-                                        <div class="author__avatar">
-                                            @php
-                                                $user = Auth::user();
-                                            @endphp
-                                            {{-- <img src="images/usr_avatar.png" alt="user avatar"> --}}
-                                            @if($user->image()->count())
-                                                <img src="{{asset($user->image()->first()->image_path.'/'.$user->image()->first()->image_name)}}" alt="user picture profile" class="rounded-circle" style="width:50px;height:50px;">
-                                            @else
-                                                <img src="{{asset('storage/users/unknownUser.jpg')}}" alt="user picture profile" class="rounded-circle" style="width:50px;height:50px;">
-                                            @endif
-                                        </div>
-
-                                        <div class="autor__info">
-                                            <p class="name text-white">
-                                               {{Auth::user()->fullname}}
-                                            </p>
-                                            <!--<p class="ammount">2000 تومان</p>-->
-                                        </div>
-
-                                        <div class="dropdowns dropdown--author">
-                                            <ul>
-                                                @if($user->isAdmin())
-                                                    <li>
-                                                        <a href="{{route('admin.index')}}">
-                                                            <span class="lnr lnr-user"></span>پنل ادمین
-                                                        </a>
-                                                    </li>
-                                                @endif
-
-                                                <li>
-                                                    <a href="{{route('user.index')}}">
-                                                        <span class="lnr lnr-user"></span>پروفایل</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="dashboard.blade.php">
-                                                        <span class="lnr lnr-home"></span>داشبورد</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="dashboard-setting.blade.php">
-                                                        <span class="lnr lnr-cog"></span>تنظیمات</a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="cart.blade.php">
-                                                        <span class="lnr lnr-cart"></span>خرید ها</a>
-                                                </li>
-                                                <li>
-                                                    <a href="favourites.blade.php">
-                                                        <span class="lnr lnr-heart"></span> علاقه مندی ها</a>
-                                                </li>
-                                                <li>
-                                                    <a href="dashboard-add-credit.blade.php">
-                                                        <span class="lnr lnr-dice"></span>کارت تخفیف</a>
-                                                </li>
-                                                <li>
-                                                    <a href="dashboard-statement.blade.php">
-                                                        <span class="lnr lnr-chart-bars"></span>بیانیه فروش</a>
-                                                </li>
-                                                <li>
-                                                    <a href="dashboard-upload.blade.php">
-                                                        <span class="lnr lnr-upload"></span>آپلود ایتم</a>
-                                                </li>
-                                                <li>
-                                                    <a href="dashboard-manage-item.blade.php">
-                                                        <span class="lnr lnr-book"></span>مدیریت آیتم ها</a>
-                                                </li>
-                                                <li>
-                                                    <a href="dashboard-withdrawal.blade.php">
-                                                        <span class="lnr lnr-briefcase"></span>برداشت ها </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                                    onclick="event.preventDefault();
-                                                                  document.getElementById('logout-form').submit();">
-                                                     <span class="lnr lnr-exit"></span>خروج
-                                                 </a>
-
-                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                                     @csrf
-                                                 </form>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <!--end /.author-author__info-->
-                                @else
-                                    <div class="author-author__info inline">
-                                        <a href="{{ route('login') }}" class="  registerLoginButton">ورود</a>
-
-                                        @if (Route::has('register'))
-                                            <a href="{{ route('register') }}" class="  registerLoginButton">ثبت نام</a>
+                            @auth
+                                <!--start .author-author__info-->
+                                <div class="author-author__info inline has_dropdown">
+                                    <div class="author__avatar">
+                                        @php
+                                            $user = Auth::user();
+                                        @endphp
+                                        {{-- <img src="images/usr_avatar.png" alt="user avatar"> --}}
+                                        @if($user->image()->count())
+                                            <img src="{{asset($user->image()->first()->image_path.'/'.$user->image()->first()->image_name)}}" alt="user picture profile" class="rounded-circle" style="width:50px;height:50px;">
+                                        @else
+                                            <img src="{{asset('storage/users/unknownUser.jpg')}}" alt="user picture profile" class="rounded-circle" style="width:50px;height:50px;">
                                         @endif
                                     </div>
-                                @endauth
+
+                                    <div class="autor__info">
+                                        <p class="name text-white">
+                                            {{Auth::user()->fullname}}
+                                        </p>
+                                        <!--<p class="ammount">2000 تومان</p>-->
+                                    </div>
+
+                                    <div class="dropdowns dropdown--author">
+                                        <ul>
+                                            @if($user->isAdmin())
+                                                <li>
+                                                    <a href="{{route('admin.index')}}">
+                                                        <span class="lnr lnr-user"></span>پنل ادمین
+                                                    </a>
+                                                </li>
+                                            @endif
+
+                                            <li>
+                                                <a href="{{route('user.index')}}">
+                                                    <span class="lnr lnr-user"></span>پروفایل</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="dashboard.blade.php">
+                                                    <span class="lnr lnr-home"></span>داشبورد</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="dashboard-setting.blade.php">
+                                                    <span class="lnr lnr-cog"></span>تنظیمات</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="cart.blade.php">
+                                                    <span class="lnr lnr-cart"></span>خرید ها</a>
+                                            </li>
+                                            <li>
+                                                <a href="favourites.blade.php">
+                                                    <span class="lnr lnr-heart"></span> علاقه مندی ها</a>
+                                            </li>
+                                            <li>
+                                                <a href="dashboard-add-credit.blade.php">
+                                                    <span class="lnr lnr-dice"></span>کارت تخفیف</a>
+                                            </li>
+                                            <li>
+                                                <a href="dashboard-statement.blade.php">
+                                                    <span class="lnr lnr-chart-bars"></span>بیانیه فروش</a>
+                                            </li>
+                                            <li>
+                                                <a href="dashboard-upload.blade.php">
+                                                    <span class="lnr lnr-upload"></span>آپلود ایتم</a>
+                                            </li>
+                                            <li>
+                                                <a href="dashboard-manage-item.blade.php">
+                                                    <span class="lnr lnr-book"></span>مدیریت آیتم ها</a>
+                                            </li>
+                                            <li>
+                                                <a href="dashboard-withdrawal.blade.php">
+                                                    <span class="lnr lnr-briefcase"></span>برداشت ها </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                                    <span class="lnr lnr-exit"></span>خروج
+                                                </a>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!--end /.author-author__info-->
+                            @else
+
+                                <div class="author-author__info mt-3">
+                                    <a href="{{ route('login') }}" class="registerLoginButton">ورود</a>
+
+                                    @if (Route::has('register'))
+                                        <a href="{{ route('register') }}" class="registerLoginButton">ثبت نام</a>
+                                    @endif
+
+                                </div>
+
+                            @endauth
+
                         @endif
                     </div>
                     <!-- end .author-area -->

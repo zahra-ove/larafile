@@ -1,17 +1,5 @@
 $(document).ready(function() {
 
-
-//SweetAlert2 Toast
-// const Toast = Swal.mixin({
-//     toast: true,
-//     position: 'top-end',
-//     showConfirmButton: false,
-//     timer: 1000
-// });
-//
-
-
-
 // ---------------------- START user profile -------------------------------//
     $(".y").click(function() {
         $(".z").hide(500);
@@ -52,7 +40,8 @@ $(document).ready(function() {
 // ----------------------- END user profile------------------------------//
 
 //------------------------- START of carousel ---------------------------//
-    $('.owl-carousel').owlCarousel({
+    // $('.owl-carousel').owlCarousel({
+    $('#owl-one').owlCarousel({
         rtl: true,
         loop: true,
         margin: 10,
@@ -70,20 +59,37 @@ $(document).ready(function() {
                 items:4
             }
         }
-    })
+    });
 //------------------------- END of carousel ---------------------------//
-
+$('#owl-two').owlCarousel({
+    rtl: true,
+    loop: true,
+    margin: 50,
+    nav: false,
+    dots: true,
+    stagePadding: 0,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:4
+        }
+    }
+});
 
 
 //------------------------- START of star rating plugin ---------------------------//
-
 
 //SweetAlert2 Toast
 const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 5000,
+    timer: 3000,
     timerProgressBar: true,
     onOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -100,10 +106,6 @@ $("#rateyo").rateYo({
     rating: $("#avgrate").data('avg'),
     starWidth: "20px",
     onSet: function (rating, rateYoInstance) {
-        // console.log(rating);
-        // console.log(rateType);
-        // console.log(rateId);
-
         sendRating(rating, rateType, rateId);
     }
 });
@@ -114,8 +116,6 @@ $("#rateyo").rateYo({
 //functions defined for star rating system
 function sendRating(rate, type, id)
 {
-
-
     $.ajax({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -130,8 +130,6 @@ function sendRating(rate, type, id)
             },
         success: function(data)
         {
-
-
             var countRate = data.countRate;
             var avgRate   = data.avgRate;
             var message   = data.message;
@@ -171,8 +169,6 @@ function sendRating(rate, type, id)
                   });
             }
 
-
-
         },
         error: function(data)
         {
@@ -183,9 +179,7 @@ function sendRating(rate, type, id)
 
 }
 
-
-
-//------------------------- END of star rating plugin ---------------------------//
+// -------------------------------- rating for each product in shop page ----------------------------//
 $(".test").each(function(){
     $x = $(this).find('.info').data('avg');
     console.log($x);
@@ -195,15 +189,76 @@ $(".test").each(function(){
         // rating: 3.6,
         rating: $(this).find('.info').data('avg'),
         starWidth: "15px",
-});
+    });
 });
 
-// $(".rateyo2").rateYo({
-//         // rating: 3.6,
-//         rating: $(".info").data('avg'),
-//         starWidth: "15px",
-// });
+//----------------------------- add to cart action by ajax    -----------------------------------------//
 
+$('#fileAdd2Cart').on('click', function(e){
+    e.preventDefault();
+    const type = 'file';
+    const id = $(this).data("id");
+
+    addingItem(type, id);   //adding item to the cart by ajax
+    cartCount();   // retrieving number of items in the cart
+
+});
+
+// function for adding item to the cart
+function addingItem(type, id)
+{
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/add-to-cart',
+        method: "POST",
+        data:
+            {
+                'type' : type,
+                'id': id,
+            },
+        success: function(data)
+        {
+            var message   = data.message;
+            console.log(message);
+
+            Toast.fire({
+                icon: 'success',
+                title: message
+            });
+        },
+        error: function(data)
+        {
+            var errors = data.responseJSON;
+            console.log(errors);
+        }
+    });
+}
+
+//retrieving number of items added to the cart
+function cartCount()
+{
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: '/cart-count',
+        method: "GET",
+
+        success: function(data)
+        {
+            var cartCount = data.cartCount;
+            $('.cartNum').attr('data-count', cartCount);
+        },
+        error: function(data)
+        {
+            var errors = data.responseJSON;
+            console.log(errors);
+        }
+    });
+}
+//-----------------------------End  add to cart action by ajax    -----------------------------------------//
 
 
 });  //end of DOM

@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
-
+// use Illuminate\Support\Facades\Session;
 
 /*======================================================================
 |                                                                       |
@@ -51,5 +52,18 @@ Route::get('/contact', 'Frontend\ContactController@index')->name('contacts.index
 Route::post('/contact', 'Frontend\ContactController@store')->name('contacts.store');    //post contact us page to store method
 
 Route::get('/shop', 'Frontend\ShopController@index')->name('shop.index');    //displaying shopping page
+// Route::get('/add-to-cart/{type}/{id}', 'Frontend\CartController@addToCart')->name('addToCart');    //add to cart by route
+Route::post('/add-to-cart', 'Frontend\CartController@addToCart')->name('addToCart');    // add to cart by ajax
+Route::get('/cart-count', 'Frontend\CartController@cartCount')->name('cartCount');    //number of items in the cart
+Route::get('/cart', 'Frontend\CartController@index')->name('shoppingCart');    //number of items in the cart
+Route::get('/remove-from-cart/{type}/{id}', 'Frontend\CartController@removeItem')->name('removeFromCart');    //number of items in the cart
 
 
+// Route::get('flushSession', function(){
+//     Session::flush();
+// });
+
+// Route::get('getSession', function(){
+//     $cart = Session::has('cart') ? Session::get('cart') : null;
+//     return $cart->totalQty;
+// });

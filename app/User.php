@@ -73,6 +73,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Rate');
     }
+
+    # one to many relation between users and carts table
+    public function carts()
+    {
+        return $this->hasMany('App\Models\Cart');
+    }
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |

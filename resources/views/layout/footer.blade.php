@@ -94,7 +94,7 @@
                         </div>
 
                         <!-- start .social -->
-                        <div class="social social--color--filled">
+                        {{-- <div class="social social--color--filled">
                             <ul>
                                 <li>
                                     <a href="#">
@@ -127,7 +127,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                         <!-- end /.social -->
                     </div>
                     <!-- end /.newsletter -->

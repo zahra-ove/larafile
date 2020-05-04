@@ -12,21 +12,21 @@
 @section('content')
 
 <!-- Start Header section -->
-{{-- <div class="row justify-content-around" dir="rtl"> --}}
-    <div class="card mt-2" dir="rtl">
-        <div class="card-header" style="height:100px;">
-            <div class="row justify-content-around mt-4">
-                <div class="col-4  text-center">
-                    <h3 class="font-weight-bold" style="color:#216353">{{$file->file_name}}</h3>
-                </div>
-                <div class="col-4 text-center">
-                    <small class="text-muted font-italic">کد محصول: {{$file->file_code}}</small>
-                </div>
+<div class="card mt-2" dir="rtl">
+    <div class="card-header" style="height:100px;">
+        <div class="row justify-content-around mt-4">
+            <div class="col-4  text-center">
+                <h3 class="font-weight-bold" style="color:#216353">{{$file->file_name}}</h3>
+            </div>
+            <div class="col-4 text-center">
+                <small class="text-muted font-italic">کد محصول: {{$file->file_code}}</small>
             </div>
         </div>
     </div>
-{{-- </div> --}}
+</div>
 <!-- End Header section -->
+
+
 
 <!-- Start Banner section -->
 <div class="container">
@@ -64,6 +64,19 @@
         <!-- Start Left section -->
         <div class="col-md-4">
 
+            <div class="card">
+                <div class="card-header font-weight-bolder text-center">خرید دوره</div>
+                <div class="card-body text-center">
+                    <p>قیمت: <span>{{$file->price}} تومان</span></p>
+                    {{-- <a href="{{route('addToCart', ['type' => 'file', 'id' => $file->id])}}" class="btn btn-success p-3 font-weight-bold" id="fileAdd2Cart" data-id={{$file->id}}>افزودن به سبد خرید<i class="fas fa-shopping-cart ml-2"></i></a>  <!-- using normal route  --> --}}
+                    <a href="" class="btn btn-success p-3 font-weight-bold" id="fileAdd2Cart" data-id={{$file->id}}>افزودن به سبد خرید<i class="fas fa-shopping-cart ml-2"></i></a>    <!-- using ajax  -->
+                    {{-- <p class="mt-5 pt-3" style="border-top:1px solid lightgray;"><i class="far fa-heart mr-2 fa-2x" id="heart"></i>افزودن علاقمندی</p> --}}
+                    <div class="mt-4 pt-3" style="border-top:1px solid lightgray;">
+                        <i class="far fa-heart mr-2 fa-2x" id="heart" style="vertical-align: middle"></i><span>افزودن به علاقمندی</span>
+                    </div>
+                </div>
+            </div>
+
             @include('fiveStarRating', ['type' => "File", 'id' => $file->id])
 
             <div class="card">
@@ -83,6 +96,11 @@
 </div>
 <!-- End Main Content -->
 
+<!-- Recommended Items   -->
+
+@if($recommendedItems->count() > 0)
+     @include('recommendedProducts', ['productsArray' => $recommendedItems])
+@endisset
 
 
 @endsection

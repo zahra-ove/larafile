@@ -25,6 +25,12 @@ class Episode extends Model
         return $this->morphMany('App\Models\Rate', 'rateble');
     }
 
+    # many to many polymorphic relationship between episodes and carts table
+    public function carts()
+    {
+        return $this->morphToMany('App\Models\Cart', 'cartable');
+    }
+
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |
