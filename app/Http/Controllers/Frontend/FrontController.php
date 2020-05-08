@@ -14,6 +14,7 @@ use App\Models\Rate;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SearchRequest;
+use App\Models\Comment;
 use RealRashid\SweetAlert\Facades\Alert;   //sweet alert Facade
 
 class FrontController extends Controller
@@ -50,6 +51,7 @@ class FrontController extends Controller
 
         #finding specified file based on Id
         $file = File::find($id);
+        $comments = $file->comments;   // retrieve all parent comments related to this file
 
         //finding recommended items for specific product
         $recommendedItems = File::RecommendedItems($id);
@@ -117,6 +119,7 @@ class FrontController extends Controller
                                         'avgrate'           =>    round( $avgrate , 2),
                                         'rateCount'         =>    $rateCount,
                                         'userRate'          =>    $userRate,
+                                        'comments'          =>    $comments,
                                         'recommendedItems'  =>    $recommendedItems
                                     ]);
     }

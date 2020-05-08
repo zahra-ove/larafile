@@ -34,7 +34,7 @@ END FOOTER AREA
     @include('layout.scripts')
 
     <!--sweet alert -->
-    {{-- @include('sweetalert::alert') --}}
+    @include('sweetalert::alert')
 
 <!-- end of js links -->
 </body>

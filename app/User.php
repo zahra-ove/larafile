@@ -79,6 +79,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Cart');
     }
+
+    # one to many relation between users and comments table
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comments');
+    }
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |

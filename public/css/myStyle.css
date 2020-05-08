@@ -179,3 +179,66 @@ a.x {
 {
     color: darkgray;
 }
+
+.comment-header{
+    padding: 8px;
+    border-bottom: 1px solid rgba(211, 211, 211, 0.466);
+}
+
+.comment-body{
+    padding: 4px;
+    margin: 10px 5px;
+}
+
+.comment-footer{
+    border-top: 1px solid rgba(211, 211, 211, 0.247);
+    padding: 2px 4px;
+}
+
+.editComment, .editReplyComment{
+    cursor: pointer;
+}
+.editComment:hover, .deleteReplyComment:hover{
+    background-color: lightgray;
+}
+.deleteComment, .deleteReplyComment{
+    cursor: pointer;
+}
+.deleteComment:hover, .deleteReplyComment:hover{
+    background-color: lightgray;
+}
+
+.replyBtn{
+    background-color: #cb95aa;
+    font-size:11px;
+    border-radius:3px;
+    cursor: pointer;
+}
+
+.comment-child{
+    background-color: rgba(211, 211, 211, 0.432);
+    margin-right: 40px;
+    margin-bottom: 5px;
+    padding: 10px;
+    border: 1px solid rgba(117, 115, 115, 0.11);
+    border-radius: 5px;
+}
+.replyComment-header{
+    padding: 2px 4px;
+    border-bottom: 1px solid rgba(185, 182, 182, 0.219);
+}
+
+.replyComment-footer{
+    border-top: 1px solid rgba(211, 211, 211, 0.452);
+    min-height: 10px;
+}
+.dropup .dropdown-toggle::after {
+    display:none;
+    /* margin-right: .255em;
+    vertical-align: .255em;
+    content: "";
+    border-top: 0;
+    border-left: 0;
+    border-bottom: 0;
+    border-right: 0; */
+}

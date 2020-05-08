@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+
+    // renderComments();
 // ---------------------- START user profile -------------------------------//
     $(".y").click(function() {
         $(".z").hide(500);
@@ -41,25 +43,26 @@ $(document).ready(function() {
 
 //------------------------- START of carousel ---------------------------//
     // $('.owl-carousel').owlCarousel({
-    $('#owl-one').owlCarousel({
-        rtl: true,
-        loop: true,
-        margin: 10,
-        nav: false,
-        dots: true,
-        stagePadding: 50,
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:3
-            },
-            1000:{
-                items:4
-            }
+// $('#owl-one').owlCarousel({
+$('.owl-one').owlCarousel({
+    rtl: true,
+    loop: true,
+    margin: 10,
+    nav: false,
+    dots: true,
+    stagePadding: 50,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:4
         }
-    });
+    }
+});
 //------------------------- END of carousel ---------------------------//
 $('#owl-two').owlCarousel({
     rtl: true,
@@ -259,6 +262,378 @@ function cartCount()
     });
 }
 //-----------------------------End  add to cart action by ajax    -----------------------------------------//
+
+
+
+//----------------------------- Edit comment Start ----------------------------------------------//
+$('.editComment').on('click', function(){
+
+    $all = $(this).closest('.commentParent');
+    var data = $all.find('.comment-body').html();
+    id = $all.find('.commentID').html();
+
+    var result= $.trim(data);
+
+    $('.editCommentBody').val(result);
+    $('.commentId').val(id);
+    $('#editModal').modal('show');
+
+
+    $('.editBtn').on('click', function(){
+    var body = $('.editCommentBody').val();  // body of comment
+    var comment = $('.commentId').val();    // id of comment
+
+    var comBody = 'commentBody_'+ comment;
+
+        $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/comment/'+ comment,
+                method: "PUT",
+                data: {'body':body},
+
+                success: function(data)
+                {
+                    var message = data.message;
+                    $('#editModal').modal('hide');
+                    // $('.comment-body').html(data.body);    // refresh body content
+                    $('#'+comBody).html(data.body);    // refresh body content
+
+                    if(message = "دیدگاه شما با موفقیت ویرایش شد.")
+                    {
+                        Toast.fire({
+                            icon: 'success',
+                            title: message,
+                            position: 'bottom-end'
+                        });
+                    }
+                    else
+                    {
+                        Toast.fire({
+                            icon: 'warning',
+                            title: message,
+                            position: 'bottom-end'
+                        });
+                    }
+
+                },
+                error: function(data)
+                {
+                    // var errors = data.responseJSON;
+                    // console.log(errors);
+                    var errors = data.responseJSON;
+                    var er = errors.errors;
+                    Object.keys(er).forEach(function(key){
+                        var x = er[key][0];
+                        console.log(x);
+                        var z = $('#editModal span#'+ key).html(x);
+                    });
+                }
+            });
+
+    });
+});
+
+//----------------------------- Edit comment End------------------------------------------------//
+
+
+//----------------------------- Delete comment Start------------------------------------------------//
+$('.deleteComment').on('click', function(){
+    $all = $(this).closest('.commentParent');
+    id = $all.find('.commentID').html();
+
+    $('.commentId').val(id);
+    $('#deleteModal').modal('show');
+
+    $('.deleteBtn').on('click', function(){
+        var comment = $('.commentId').val();    // id of comment
+        $('#deleteModal').modal('hide');
+
+        $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/comment/'+ comment,
+                method: "DELETE",
+
+                success: function(data)
+                {
+                    var message = data.message;
+                    // renderComments();
+                    // console.log(message);
+                    //  $('.comment-body').html(data.body);    // refresh body content
+
+                    location.reload(true);
+                    if(message = "دیدگاه شما حذف شد.")
+                    {
+                        Toast.fire({
+                            icon: 'success',
+                            title: message,
+                            position: 'bottom-end'
+                        });
+                    }
+                    else
+                    {
+                        Toast.fire({
+                            icon: 'warning',
+                            title: message,
+                            position: 'bottom-end'
+                        });
+                    }
+
+                },
+                error: function(data)
+                {
+                    var errors = data.responseJSON;
+                    console.log(errors);
+                }
+            });
+    });
+
+});
+//----------------------------- Delete comment End------------------------------------------------//
+
+
+//----------------------------- Rely comment Start ------------------------------------------------//
+$('.replyBtn').on('click', function(){
+    var comment = $(this).data("id");    //get id of reply button that is equal to parent commnet id
+    // var commentable_type = $('#replyModal').find('.commentable_type').data("type");
+
+    $('#replyModal').modal('show');
+
+
+    $('.replyBtnModal').on('click', function(){
+        var name = $('#replyName').val();
+        var email = $('#replyEmail').val();
+        var body = $('#replyBody').val();
+
+        // console.log(name);
+        // console.log(email);
+        // console.log(body);
+
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            url: '/comment-reply/'+ comment,
+            method: "POST",
+            data: {
+                    'name' : name,
+                    'email' : email,
+                    'body' : body
+                },
+            success: function(data)
+            {
+                var message = data.message;
+                // console.log(message);
+                $('#replyModal').modal('hide');
+
+                // renderComments();
+                location.reload(true);
+
+                if(message = "پاسخ شما به دیدگاه موردنظر با موفقیت ثبت شد.")
+                {
+                    Toast.fire({
+                        icon: 'success',
+                        title: message,
+                        position: 'bottom-end'
+                    });
+                }
+                else
+                {
+                    Toast.fire({
+                        icon: 'warning',
+                        title: message,
+                        position: 'bottom-end'
+                    });
+                }
+
+            },
+            error: function(data)
+            {
+                var errors = data.responseJSON;
+                var er = errors.errors;  // retrieve validation errors and show them in right place in the reply form
+                Object.keys(er).forEach(function(key){
+                    var x = er[key][0];
+                    var z = $('#replyModal span#'+ key).html(x);
+
+                });
+            }
+        });
+    });
+});
+//----------------------------- Rely comment End --------------------------------------------------------//
+
+
+//----------------------------- Edit Rely comment Start ------------------------------------------------//
+
+$('.editReplyComment').on('click', function(){
+
+    $all = $(this).closest('.comment-child');
+    var data = $all.find('.replyComment-body').html();
+    id = $all.find('.replyCommentID').html();
+
+    var body= $.trim(data);
+
+    $('.editCommentBody').val(body);
+    $('.commentId').val(id);
+    $('#editModal').modal('show');
+
+
+
+    $('.editBtn').on('click', function(){
+        var body = $('.editCommentBody').val();  // body of comment
+        var comment = $('.commentId').val();    // id of comment
+
+        var comBody = 'replyComment_'+ comment;
+
+        $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    // Accept : "application/json"
+                },
+                url: '/comment/'+ comment,
+                method: "PUT",
+                data: {'body':body},
+
+                success: function(data)
+                {
+                    var message = data.message;
+                    console.log(message);
+                    $('#editModal').modal('hide');
+
+                    $('#'+comBody).html(data.body);    // refresh body content
+
+                    if(message = "دیدگاه شما با موفقیت ویرایش شد.")
+                    {
+                        Toast.fire({
+                            icon: 'success',
+                            title: message,
+                            position: 'bottom-end'
+                        });
+                    }
+                    else
+                    {
+                        Toast.fire({
+                            icon: 'warning',
+                            title: message,
+                            position: 'bottom-end'
+                        });
+                    }
+
+                },
+                error: function(data)
+                {
+                    var errors = data.responseJSON;
+                    var er = errors.errors;
+                    Object.keys(er).forEach(function(key){
+                        var x = er[key][0];
+                        // console.log(x);
+                        var z = $('#editModal span#'+ key).html(x);
+
+                    });
+                }
+            });
+
+    });
+
+});
+//----------------------------- Edit Rely comment End ------------------------------------------------//
+
+
+//----------------------------- Delete Rely comment Start --------------------------------------------//
+$('.deleteReplyComment').on('click', function(){
+    $all = $(this).closest('.comment-child');
+    // var data = $all.find('.replyComment-body').html();
+    id = $all.find('.replyCommentID').html();
+
+    $('.commentId').val(id);
+    $('#deleteModal').modal('show');
+
+
+    $('.deleteBtn').on('click', function(){
+       var comment = $('.commentId').val();    // id of comment
+       $('#deleteModal').modal('hide');
+
+        $.ajax({
+             headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             },
+             url: '/comment/'+ comment,
+             method: "DELETE",
+
+             success: function(data)
+             {
+                 var message = data.message;
+                 console.log(message);
+                //  $('.comment-body').html(data.body);    // refresh body content
+                // renderComments();
+                location.reload(true);
+                 if(message = "دیدگاه شما حذف شد.")
+                 {
+                     Toast.fire({
+                         icon: 'success',
+                         title: message,
+                         position: 'bottom-end'
+                     });
+                 }
+                 else
+                 {
+                     Toast.fire({
+                         icon: 'warning',
+                         title: message,
+                         position: 'bottom-end'
+                     });
+                 }
+
+             },
+             error: function(data)
+             {
+                 var errors = data.responseJSON;
+                 console.log(errors);
+             }
+        });
+
+    });
+
+});
+//----------------------------- Delete Rely comment End ---------------------------------------------//
+
+
+//------------------ render all comments by ajax request -------------------------------------//
+
+
+// function renderComments() {
+
+
+//     $.ajax({
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         },
+//         url: '/all-comments',
+//         dataType: 'json',
+//         method: "GET",
+
+//         success: function(data)
+//         {
+//             console.log(data);
+//             $(".comments-list").append(data);
+//             // console.log($(".comments-list"));
+//         },
+//         error: function(data)
+//         {
+//             console.log(data);
+//             // var errors = data.responseJSON;
+//             // console.log(errors);
+//         }
+//     });
+
+// }
+
+
+//---------------------------------------------------------------------------------------------//
 
 
 });  //end of DOM

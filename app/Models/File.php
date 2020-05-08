@@ -56,6 +56,12 @@ class File extends Model
     {
         return $this->morphToMany('App\Models\Cart', 'cartable');
     }
+
+    #one to many relationship between comments and files table
+    public function comments()
+    {
+        return $this->morphMany('App\Models\Comment', 'commentable');
+    }
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |

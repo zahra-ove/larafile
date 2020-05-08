@@ -97,10 +97,13 @@
 <!-- End Main Content -->
 
 <!-- Recommended Items   -->
-
 @if($recommendedItems->count() > 0)
      @include('recommendedProducts', ['productsArray' => $recommendedItems])
 @endisset
 
-
+{{-- comment form --}}
+    @include('comment.comment-form', ['commentable_type' => get_class($file), 'commentable_id' => $file->id])
+<div class="comments-list">
+    @include('comment.comment-list', ['comments' => $comments, 'commentable_type' => get_class($file)])
+</div>
 @endsection

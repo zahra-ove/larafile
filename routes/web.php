@@ -59,6 +59,11 @@ Route::get('/cart', 'Frontend\CartController@index')->name('shoppingCart');    /
 Route::get('/remove-from-cart/{type}/{id}', 'Frontend\CartController@removeItem')->name('removeFromCart');    //number of items in the cart
 
 
+// comment
+Route::resource('comment', 'Frontend\CommentController')->only(['store', 'update', 'destroy']);
+Route::post('comment-reply/{comment}', 'Frontend\CommentController@reply')->name('comment.reply');
+// Route::get('all-comments', 'Frontend\CommentController@allComments')->name('all-comments');
+
 // Route::get('flushSession', function(){
 //     Session::flush();
 // });
