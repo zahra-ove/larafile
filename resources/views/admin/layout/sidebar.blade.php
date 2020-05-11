@@ -15,7 +15,7 @@
                             <i class="fa fa-fw fa-user-circle"></i>
                             جدول ها
                         </a>
-                        <div id="submenu-1" class="collapse submenu" style="">
+                        <div id="submenu-1" class="collapse submenu show p-2">
                             <ul class="nav flex-column px-0">
 
                                 <li class="nav-item text-right p-0">
@@ -96,11 +96,11 @@
 
                                         <ul class="nav flex-column text-right p-0">
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{route('admin.comments.index')}}">لیست دیدگاه های تایید شده</a>
+                                                <a class="nav-link" href="{{route('admin.comments.index')}}" style="font-size:11px;">دیدگاه های تایید شده</a>
                                             </li>
 
                                             <li class="nav-item">
-                                                <a class="nav-link" href="{{route('admin.comments.unapproved')}}">لیست دیدگاه های تایید نشده</a>
+                                                <a class="nav-link m-1 d-inline" href="{{route('admin.comments.unapproved')}}" style="font-size:11px;">دیدگاه های تایید نشده<span class="customBadge mr-2">{{$unApprovedComments}}</span></a>
                                             </li>
                                         </ul>
 
@@ -335,6 +335,7 @@
                         </div>
                     </li> --}}
                 </ul>
+
             </div>
         </nav>
     </div>

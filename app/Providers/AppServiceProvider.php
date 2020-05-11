@@ -27,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('layout.header', 'App\Http\View\Composers\CategoriesComposer');
         View::composer('cart.cart-count', 'App\Http\View\Composers\CartsComposer');
+        View::composer('admin.layout.sidebar', 'App\Http\View\Composers\UnapprovedCommentsComposer');
     }
 }

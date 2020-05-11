@@ -39,13 +39,7 @@
                         <td>
                             <div class="btn-group">
                                 <a href="{{route('admin.comments.approve', ['id' => $comment->id])}}" class="btn btn-success btn-xs ml-1">تایید</a>
-
-                                {{-- <form action="{{route('admin.comments.destroy', ['comment' => $comment])}}" method="POST">
-                                    @method('DELETE')
-                                    @csrf --}}
-
-                                    <button type="submit" class="btn btn-danger btn-xs ml-1" style="color:white;" id="btnDelete" data-toggle="modal" data-target="#deleteModal">حذف</button>
-                                {{-- </form> --}}
+                                <a class="btn btn-danger btn-xs ml-1" style="color:white;" id="btnDelete" data-toggle="modal" data-target="#deleteModal">حذف</a>
                             </div>
                         </td>
                     </tr>
@@ -66,13 +60,13 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <h5 class="modal-title font-weight-bold" id="deleteModalLabel">حذف دیدگاه</h5>
+          <button type="button" class="close m-0 p-0" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-         کامنت حذف شود؟
+         دیدگاه حذف شود؟
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>

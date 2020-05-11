@@ -38,12 +38,14 @@
                         <td>{{jdate($comment->created_at)->ago()}}</td>
                         <td>{{jdate($comment->updated_at)->ago()}}</td>
                         <td>
-                            <form action="{{route('admin.comments.destroy', ['comment', $comment])}}" method="POST">
+                            <a class="btn btn-danger btn-xs ml-1" style="color:white;" id="btnDelete" data-toggle="modal" data-target="#deleteModal">حذف</a>
+
+                            {{-- <form action="{{route('admin.comments.destroy', ['comment', $comment])}}" method="POST">
                                 @method('DELETE')
                                 @csrf
 
                                 <a class="btn btn-outline-danger btn-xs">حذف</a>
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
                 @empty
@@ -55,5 +57,28 @@
         </table>
     </div>
 
-
+  <!-- Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title font-weight-bold" id="deleteModalLabel">حذف دیدگاه</h5>
+          <button type="button" class="close m-0 p-0" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         دیدگاه حذف شود؟
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">انصراف</button>
+          <form action="{{route('admin.comments.destroy', ['comment' => $comment])}}" method="POST">
+                @method('DELETE')
+                @csrf
+            <button type="submit" class="btn btn-primary">حذف</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection
