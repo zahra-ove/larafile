@@ -10,6 +10,7 @@ use App\User;
 use App\Models\Image;
 use App\Http\Requests\storeUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Role;
 use App\Traits\uploadTrait;
 use Illuminate\Support\Facades\Storage;
 
@@ -106,8 +107,9 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $roles = Role::all();
 
-        return view('admin.users.edit', compact('user'));
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -127,6 +129,8 @@ class UserController extends Controller
          $user->mobile    =  $request->mobile;
          $user->gender_id =  $request->gender_id;
          $user->save();
+
+         $user->roles()->sync($request->input('roles'));   //attach specified roles to this user
 
 
 

@@ -101,7 +101,6 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $editedUser = User::findOrFail($id);   //finding user based on id
 
         $request->validate([

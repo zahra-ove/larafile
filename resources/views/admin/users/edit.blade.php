@@ -59,9 +59,33 @@
                 </div>
 
                 <div class="mt-4 form-row justify-content-center">
-                    <label for="image" class="mb-0 mr-2">آپلود تصویر</label>
+                    <label for="image" class="mb-0 ml-2">آپلود تصویر</label>
                     <input type="file"  id="image" name="image" />
                 </div>
+
+                {{-- <div class="mt-4 form-row justify-content-center">
+                    <p class="m-0 my-auto">نقش کاربر:</p>
+                    @foreach($roles as $role)
+                        <div class="custom-control custom-checkbox mr-4">
+                            <input type="checkbox" class="custom-control-input" id="customCheck_{{$role->id}}" name="roles[]">
+                            <label class="custom-control-label" for="customCheck_{{$role->id}}">{{$role->name}}</label>
+                        </div>
+                    @endforeach
+                </div> --}}
+                <hr/>
+                <div class="my-2 form-group text-center">
+                    <label class="mb-4 font-weight-bold p-2 text-center" style="background-color: #13EBA2;color:white;border-radius:10px;">نقش کاربر</label>
+                    @foreach($roles as $role)
+                        <div class="row justify-content-center">
+                            <div class="col-2">
+                                {{-- <br/> --}}
+                                <input class="float-right" type="checkbox"  name="roles[]"  value="{{$role->id}}" @if($user->roles->pluck('id')->contains($role->id)) checked @endif />
+                                <label class="float-left">{{$role->name}}</label><br/>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <hr/>
 
                 <div class="mt-4 form-row justify-content-center">
                     <button type="submit" class="btn btn-primary">ویرایش</button>

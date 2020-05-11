@@ -19,10 +19,10 @@
                             <ul class="nav flex-column px-0">
 
                                 <li class="nav-item text-right p-0">
-                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-1" aria-controls="submenu-1-1">کاربران</a>
+                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-1" aria-controls="submenu-1-1"><i class="fas fa-users mr-2"></i>کاربران</a>
                                     <div id="submenu-1-1" class="collapse submenu" style="">
 
-                                        <ul class="nav flex-column text-right p-0">
+                                        <ul class="nav flex-column text-right p-0 mr-5 mb-1">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{route('admin.users.index')}}">لیست کاربران</a>
                                             </li>
@@ -36,10 +36,10 @@
                                 </li>
 
                                 <li class="nav-item text-right p-0">
-                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">محصولات</a>
+                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2"><i class="fab fa-leanpub mr-2"></i>محصولات</a>
                                     <div id="submenu-1-2" class="collapse submenu" style="">
 
-                                        <ul class="nav flex-column text-right p-0">
+                                        <ul class="nav flex-column text-right p-0 mr-5 mb-1">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{route('admin.files.index')}}">لیست محصولات</a>
                                             </li>
@@ -54,10 +54,10 @@
 
 
                                 <li class="nav-item text-right p-0">
-                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-3" aria-controls="submenu-1-3">دسته بندی ها</a>
+                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-3" aria-controls="submenu-1-3"><i class="fas fa-sitemap mr-2"></i>دسته بندی ها</a>
                                     <div id="submenu-1-3" class="collapse submenu" style="">
 
-                                        <ul class="nav flex-column text-right p-0">
+                                        <ul class="nav flex-column text-right p-0 mr-5 mb-1">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{route('admin.categories.index')}}">لیست دسته بندی ها </a>
                                             </li>
@@ -73,10 +73,10 @@
 
 
                                 <li class="nav-item text-right p-0">
-                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-4" aria-controls="submenu-1-4">مقالات</a>
+                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-4" aria-controls="submenu-1-4"><i class="fas fa-copy mr-2"></i>مقالات</a>
                                     <div id="submenu-1-4" class="collapse submenu" style="">
 
-                                        <ul class="nav flex-column text-right p-0">
+                                        <ul class="nav flex-column text-right p-0 mr-5 mb-1">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{route('admin.articles.index')}}">لیست مقالات</a>
                                             </li>
@@ -91,10 +91,10 @@
 
 
                                 <li class="nav-item text-right p-0">
-                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-5" aria-controls="submenu-1-5">دیدگاه ها</a>
+                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-5" aria-controls="submenu-1-5"><i class="fas fa-comments mr-2"></i>دیدگاه ها</a>
                                     <div id="submenu-1-5" class="collapse submenu" style="">
 
-                                        <ul class="nav flex-column text-right p-0">
+                                        <ul class="nav flex-column text-right p-0 mr-3">
                                             <li class="nav-item">
                                                 <a class="nav-link" href="{{route('admin.comments.index')}}" style="font-size:11px;">دیدگاه های تایید شده</a>
                                             </li>
