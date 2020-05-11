@@ -3,8 +3,7 @@
         <h6 class="px-5 py-2 mb-4" style="background-color:#9d5981;color:white;">سایر نظرات</h6>
     </div>
 
-
-    {{-- <div class="row justify-content-center"> --}}
+    @if($comments->count() > 0)
         @foreach($comments as $comment)
             @if($comment->approved == 1)
                 <div class="row justify-content-center commentParent">
@@ -80,7 +79,13 @@
                 </div>
             @endif
         @endforeach
-    {{-- </div> --}}
+    @else
+        <div class="row justify-content-center mb-2" >
+            <div class="col-6" style="border:1px solid lightgray;">
+                <p class="pt-2 text-center">دیدگاهی ثبت نشده است.</p>
+            </div>
+        </div>
+    @endif
 
 </div>
 

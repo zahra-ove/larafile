@@ -51,7 +51,7 @@ class FrontController extends Controller
 
         #finding specified file based on Id
         $file = File::find($id);
-        $comments = $file->comments;   // retrieve all parent comments related to this file
+        $comments = $file->comments->sortByDesc('created_at');   // retrieve all parent comments related to this file and order them in a descending way based on "created at" time
 
         //finding recommended items for specific product
         $recommendedItems = File::RecommendedItems($id);

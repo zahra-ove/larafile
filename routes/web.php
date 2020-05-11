@@ -19,6 +19,11 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('auth', '
     Route::resource('/users', 'UserController');
     Route::resource('/categories', 'CategoryController');
     Route::resource('/files', 'FileController');
+    Route::resource('/articles', 'ArticleController');
+    Route::resource('comments', 'CommentController')->except('create', 'store', 'edit', 'update');
+    Route::get('comments-approval/{id}', 'CommentController@approve')->name('comments.approve');
+    Route::get('unapproved-comments', 'CommentController@unapprovedComments')->name('comments.unapproved');
+    Route::get('/image-deletion/{id}', 'ImageController@destroy')->name('image-deletion');
 });
 
 
@@ -63,6 +68,11 @@ Route::get('/remove-from-cart/{type}/{id}', 'Frontend\CartController@removeItem'
 Route::resource('comment', 'Frontend\CommentController')->only(['store', 'update', 'destroy']);
 Route::post('comment-reply/{comment}', 'Frontend\CommentController@reply')->name('comment.reply');
 // Route::get('all-comments', 'Frontend\CommentController@allComments')->name('all-comments');
+
+
+//blog
+Route::get('blog', 'Frontend\BlogController@index')->name('blog.index');
+Route::get('blog/{slug}', 'Frontend\BlogController@show')->name('blog.show');
 
 // Route::get('flushSession', function(){
 //     Session::flush();

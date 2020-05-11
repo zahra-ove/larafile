@@ -13,11 +13,18 @@ class Category extends Model
 |       ************** Relationships Functions **************           |
 |                                                                       |
 ========================================================================*/
+
+    # one to many relationship between categories table and files table
     public function files()
     {
         return $this->hasMany('App\Models\File');
     }
 
+    # one to many relationship between categories table and articles table
+    public function articles()
+    {
+        return $this->hasMany('App\Models\Article');
+    }
 
 
 /*======================================================================

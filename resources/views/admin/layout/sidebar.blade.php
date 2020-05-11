@@ -70,10 +70,47 @@
                                     </div>
                                 </li>
 
+
+
+                                <li class="nav-item text-right p-0">
+                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-4" aria-controls="submenu-1-4">مقالات</a>
+                                    <div id="submenu-1-4" class="collapse submenu" style="">
+
+                                        <ul class="nav flex-column text-right p-0">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('admin.articles.index')}}">لیست مقالات</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('admin.articles.create')}}">افزودن مقاله جدید</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+
+
+                                <li class="nav-item text-right p-0">
+                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-5" aria-controls="submenu-1-5">دیدگاه ها</a>
+                                    <div id="submenu-1-5" class="collapse submenu" style="">
+
+                                        <ul class="nav flex-column text-right p-0">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('admin.comments.index')}}">لیست دیدگاه های تایید شده</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('admin.comments.unapproved')}}">لیست دیدگاه های تایید نشده</a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-2" aria-controls="submenu-2">
                             <i class="fa fa-fw fa-rocket"></i>UI Elements</a>
                         <div id="submenu-2" class="collapse submenu" style="">
@@ -296,7 +333,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
         </nav>

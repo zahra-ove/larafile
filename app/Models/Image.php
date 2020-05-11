@@ -15,4 +15,17 @@ class Image extends Model
     {
         return $this->morphTo();
     }
+
+    public function getImageTypeAttribute()
+    {
+        $type = $this->type;   //get type of image
+        if($type == 'o')
+        {
+            return 'معمولی';
+        }
+        elseif($type == 'b')
+        {
+            return 'بنر';
+        }
+    }
 }

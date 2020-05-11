@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
 
-    protected $fillable = ['name', 'email', 'user_id', 'body', 'commentable_id', 'commentable_type'];
-    
+    protected $fillable = ['name', 'email', 'user_id', 'body', 'commentable_id', 'commentable_type', 'approved'];
+
     #one to many polymorphic relationship between comments ans articles, files, episodes table.
     public function commentable()
     {

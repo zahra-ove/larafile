@@ -85,6 +85,12 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Comments');
     }
+
+    # one to many relation between users and articles table
+    public function articles()
+    {
+        return $this->hasMany('App\Models\Article');
+    }
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |

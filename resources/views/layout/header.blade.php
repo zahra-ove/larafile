@@ -335,7 +335,7 @@
                                 </li>
 
                                 <li class="has_megamenu">
-                                    <a href="#">مقالات</a>
+                                    <a href="{{route('blog.index')}}">مقالات</a>
                                 </li>
 
                                 <li>

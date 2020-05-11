@@ -234,11 +234,13 @@ a.x {
 }
 .dropup .dropdown-toggle::after {
     display:none;
-    /* margin-right: .255em;
-    vertical-align: .255em;
-    content: "";
-    border-top: 0;
-    border-left: 0;
-    border-bottom: 0;
-    border-right: 0; */
+}
+
+
+/* article badge */
+.articleBadge{
+    font-size:12px;
+    background-color:lightgray;
+    border-radius:20px;
+    padding:5px 8px;
 }
