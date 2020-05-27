@@ -1,5 +1,5 @@
 <footer class="footer-area dir-rtl">
-    <div class="footer-big ">
+    <div class="footer-big pt-3">
         <!-- start .container -->
         <div class="container">
             <div class="row">

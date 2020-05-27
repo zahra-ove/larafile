@@ -14,6 +14,7 @@ use App\Models\Rate;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\SearchRequest;
+use App\Models\Article;
 use App\Models\Comment;
 use RealRashid\SweetAlert\Facades\Alert;   //sweet alert Facade
 
@@ -25,23 +26,23 @@ class FrontController extends Controller
         $newFiles = File::orderBy('created_at', 'desc')->limit(8)->get();  //retrieve 5 latest product that is added to website
 
         $topTenSoldFileId = Orderable::topTenSeller('File');   //finding top ten sold files in last three months based on file Id
-        $topsoldFiles = File::findMany($topTenSoldFileId);  //finding top ten sold files in last three months based on file object
-
-        // finding top 10 popular products based on click count
-        $popularFilesId = View::mostviewedfiles()->pluck('viewable_id');
-        // return $popularFilesId;
-        $popularFiles = File::findMany($popularFilesId);  //finding top ten popular files in last three months based on file ID
+        $topsoldFiles = File::findMany($topTenSoldFileId);   //finding top ten sold files in last three months based on file object
 
 
-        //retrieve all categories
-        $categories = Category::all();
+        $popularFilesId = View::mostviewedfiles()->pluck('viewable_id');  // finding top 10 popular products based on click count
+        $popularFiles = File::findMany($popularFilesId);                //finding top ten popular files in last three months based on file ID
+
+
+        $categories = Category::all();    //retrieve all categories
+        $newArticles = Article::orderBy('created_at', 'desc')->limit(6)->get();   //retrieve newest articles
 
         return view('index')->with([
                                     'files'        =>  $files,
                                     'newFiles'     =>  $newFiles,
                                     'categories'   =>  $categories,
                                     'topsoldFiles' =>  $topsoldFiles,
-                                    'popularFiles' =>  $popularFiles
+                                    'popularFiles' =>  $popularFiles,
+                                    'newArticles'  =>  $newArticles
                                 ]);
     }
 
@@ -51,6 +52,7 @@ class FrontController extends Controller
 
         #finding specified file based on Id
         $file = File::find($id);
+        $file->increment('view_count'); //increment number of views for this file by one
         $comments = $file->comments->sortByDesc('created_at');   // retrieve all parent comments related to this file and order them in a descending way based on "created at" time
 
         //finding recommended items for specific product

@@ -13,13 +13,14 @@
         @if($resultNumber != 0)
 
             <div class="col-12 my-2">
-                <p><span style="color:darkmagenta">{{$resultNumber}}</span> نتیجه یافت شد.</p>
+                <p style="background-color:lightblue;padding:2px;display:inline-block;width:150px;text-align:center;"><span style="color:darkmagenta;">{{$resultNumber}}</span> نتیجه یافت شد.</p>
             </div>
 
             <div class="container">
+                <div class="row">
                 @foreach($results as $item)
                     <div class="col-lg-3 col-md-6 col-9 my-4  mx-auto mx-lg-0">
-                        <div class="card shadow" style="max-height:60vh;">
+                        <div class="card shadow" style="min-height:70vh;">
                             <img src="{{asset($item->images()->where('type', 'o')->first()->image_path.'/'.$item->images()->where('type', 'o')->first()->image_name)}}" alt="product image" class="card-img-top mx-auto" style="width:300px;height:200px;">
                             <div class="card-body">
                                 <a href="{{route('showProduct', ['id' => $item->id])}}"><h5 class="card-title text-center">{{$item->file_name}}</h5></a>
@@ -28,6 +29,7 @@
                         </div>
                     </div>
                 @endforeach
+                </div>
             </div>
 
         @else

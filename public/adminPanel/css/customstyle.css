@@ -4,6 +4,7 @@
     font-family: IRANSans;
     font-style: normal;
     font-weight: normal;
+
     src: url('/fonts/IRANSansWeb.eot');
     src: url('/fonts/IRANSansWeb.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
     url('/fonts/IRANSansWeb.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/

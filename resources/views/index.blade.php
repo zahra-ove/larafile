@@ -31,7 +31,7 @@ START HERO AREA
 
                         <!-- start .hero__btn-area-->
                         <div class="hero__btn-area">
-                            <a href="all-products.blade.php" class="btn btn--round btn--lg">مشاهده تمام محصولات</a>
+                            <a href="{{route('shop.index')}}" class="btn btn--round btn--lg">مشاهده تمام محصولات</a>
                             <a href="#popularFiles" class="btn btn--round btn--lg">محصولات محبوب</a>
                         </div>
                         <!-- end .hero__btn-area-->
@@ -429,10 +429,10 @@ START LATEST NEWS
             <!-- start col-md-12 -->
             <div class="col-md-12">
                 <div class="section-title">
-                    <h1>آخرین
-                        <span class="highlighted">اخبار</span>
+                    <h1>جدیدترین
+                        <span class="highlighted">مقالات</span>
                     </h1>
-                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. </p>
+                    <p>در این بخش میتوانید از جدیدترین مقالات منتشر شده در سایت باخبر شوید.</p>
                 </div>
             </div>
             <!-- end /.col-md-12 -->
@@ -440,115 +440,46 @@ START LATEST NEWS
         <!-- end /.row -->
 
         <!-- start .row -->
-        <div class="row">
-            <!-- start .col-md-4 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="news">
-                    <div class="news__thumbnail">
-                        <img src="images/new/news1.png" alt="News Thumbnail">
-                    </div>
-                    <div class="news__content">
-                        <a href="#" class="news-title">
-                            <h4>روند طراحی وب در سال 2019</h4>
-                        </a>
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                            است.</p>
-                    </div>
-                    <div class="news__meta">
-                        <div class="date">
-                            <span class="lnr lnr-clock"></span>
-                            <p>17 آبان 1397</p>
-                        </div>
+        <!-- start .col-md-4 -->
+        @foreach($newArticles->chunk(3) as $items)
+            <div class="row mb-5">
+                @foreach($items as $article)
+                    <div class="col-lg-4 col-md-6 shadow">
+                        <div class="news">
+                            <div class="news__thumbnail">
+                                <img src="{{asset($article->images()->where('type', 'o')->first()->image_path.'/'.$article->images()->where('type', 'o')->first()->image_name)}}" alt="article image" style="width:400px;height:300px;">
+                            </div>
+                            <div class="news__content">
+                                <a href="{{route('blog.show', ['slug' => $article->slug])}}" class="news-title">
+                                    <h4>{{$article->title}}</h4>
+                                </a>
+                                <p>{!!$article->brief_body!!}</p>
+                            </div>
+                            <div class="news__meta">
+                                <div class="date">
+                                    <span class="lnr lnr-clock"></span>
+                                    <p>{{jdate($article->created_at)->ago()}}</p>
+                                </div>
 
-                        <div class="other">
-                            <ul>
-                                <li>
-                                    <span class="lnr lnr-bubble"></span>
-                                    <span>45</span>
-                                </li>
-                                <li>
-                                    <span class="lnr lnr-eye"></span>
-                                    <span>345</span>
-                                </li>
-                            </ul>
+                                <div class="other">
+                                    <ul>
+                                        <li>
+                                            <span class="lnr lnr-bubble"></span>
+                                            <span>{{$article->CommentsNumber()}}</span>
+                                        </li>
+                                        <li>
+                                            <span class="lnr lnr-eye"></span>
+                                            <span>{{$article->view_count}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
+        @endforeach
             <!-- end /.col-md-4 -->
-
-            <!-- start .col-md-4 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="news">
-                    <div class="news__thumbnail">
-                        <img src="images/new/news2.png" alt="News Thumbnail">
-                    </div>
-                    <div class="news__content">
-                        <a href="#" class="news-title">
-                            <h4>بهترین توصیه برای شروع پروژه خود</h4>
-                        </a>
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                            است.</p>
-                    </div>
-                    <div class="news__meta">
-                        <div class="date">
-                            <span class="lnr lnr-clock"></span>
-                            <p>17 آبان 1397</p>
-                        </div>
-
-                        <div class="other">
-                            <ul>
-                                <li>
-                                    <span class="lnr lnr-bubble"></span>
-                                    <span>45</span>
-                                </li>
-                                <li>
-                                    <span class="lnr lnr-eye"></span>
-                                    <span>345</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end /.col-md-4 -->
-
-            <!-- start .col-md-4 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="news">
-                    <div class="news__thumbnail">
-                        <img src="images/new/news1.png" alt="News Thumbnail">
-                    </div>
-                    <div class="news__content">
-                        <a href="#" class="news-title">
-                            <h4>10 ابزار برای طراحی قالب</h4>
-                        </a>
-                        <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک
-                            است.</p>
-                    </div>
-                    <div class="news__meta">
-                        <div class="date">
-                            <span class="lnr lnr-clock"></span>
-                            <p>17 آبان 1397</p>
-                        </div>
-
-                        <div class="other">
-                            <ul>
-                                <li>
-                                    <span class="lnr lnr-bubble"></span>
-                                    <span>45</span>
-                                </li>
-                                <li>
-                                    <span class="lnr lnr-eye"></span>
-                                    <span>345</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- end /.col-md-4 -->
-        </div>
         <!-- end /.row -->
     </div>
     <!-- end /.container -->

@@ -12,6 +12,7 @@ use App\Models\Category;
 use App\Traits\uploadTrait;
 use App\Http\Requests\StoreFileRequest;
 use App\Http\Requests\UpdateFileRequest;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
@@ -41,10 +42,12 @@ class FileController extends Controller
     {
         $categories = Category::all();
         $types = Type::all();
+        $tags = Tag::all();
 
         return view('admin.files.create')->with([
                                                 'categories' =>  $categories,
-                                                'types'      =>  $types
+                                                'types'      =>  $types,
+                                                'tags'       =>  $tags
                                                 ]);
     }
 
@@ -62,6 +65,7 @@ class FileController extends Controller
        $data = collect($request->validated())->forget('image')->toArray();
        $file = File::create($data);
 
+       $file->tags()->sync($request->input('tags'));   //attach determined tags to this file
 
        if($request->hasFile('image'))
        {
@@ -97,14 +101,18 @@ class FileController extends Controller
      */
     public function edit($id)
     {
+
+
         $file = File::find($id);
 
         $categories = Category::all();
         $types = Type::all();
+        $tags = Tag::all();
 
         return view('admin.files.edit', compact('file'))->with([
                                                                 'categories' =>  $categories,
-                                                                'types'      =>  $types
+                                                                'types'      =>  $types,
+                                                                'tags'       =>  $tags
                                                                 ]);
     }
 
@@ -121,6 +129,9 @@ class FileController extends Controller
         $file = File::find($id);
 
         $result = $file->update($data);    //$result shows 1 if update process is successful.
+
+       $file->tags()->sync($request->input('tags'));   //attach determined tags to this file
+
 
        if($request->hasFile('image'))
        {
@@ -149,6 +160,8 @@ class FileController extends Controller
     {
         $file = File::find($id);
 
+        $file->tags()->detach(); // detach all tags from this file
+        
         //if file has any image saved in images table then delete it from storage
         if($file->images->count() > 0)
         {

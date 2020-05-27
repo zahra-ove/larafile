@@ -21,6 +21,9 @@ class BlogController extends Controller
     public function show($slug)
     {
         $article = Article::where('slug', $slug)->first();
+
+        // $commentsCount = $article->CommentsNumber();  //get number of comments for this article
+
         $comments = $article->comments->sortByDesc('created_at');   // retrieve all parent comments related to this article and order them in a descending way based on "created at" time
 
         $article->increment('view_count');  // increase view count of this article one

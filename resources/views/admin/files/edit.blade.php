@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-
+{{-- @dd($file->tags->pluck('id')) --}}
 @section('title', 'ویرایش محصول')
 
 @section('content')
@@ -83,10 +83,21 @@
                     </div>
                 </div>
 
+                <!-- Fifth row ---- selecting tags for this file  -->
+                <div class="form-group required">
+                    <label for="tags" class="col-sm-1 control-label">تگ</label>
+                    <select class="tags-list form-control" name="tags[]" id="tags" multiple="multiple">
+                        @foreach($tags as $tag)
+                            <option value="{{$tag->id}}"  @if($file->tags->pluck('id')->contains($tag->id)) selected @endif>{{$tag->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
                 {{-- buttons --}}
                 <div class="row justify-content-center mt-5">
                     <div class="col-4 text-center">
-                        <button type="submit" class="btn btn-secondary btn-sm">ذخیره</button>
+                        <button type="submit" class="btn btn-secondary btn-sm">ویرایش</button>
                         <a href="{{route('admin.files.index')}}" class="btn btn-primary btn-sm">بازگشت</a>
                     </div>
                 </div>

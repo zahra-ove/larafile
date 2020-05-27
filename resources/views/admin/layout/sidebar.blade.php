@@ -100,7 +100,25 @@
                                             </li>
 
                                             <li class="nav-item">
-                                                <a class="nav-link m-1 d-inline" href="{{route('admin.comments.unapproved')}}" style="font-size:11px;">دیدگاه های تایید نشده<span class="customBadge mr-2">{{$unApprovedComments}}</span></a>
+                                                <a class="nav-link d-inline" href="{{route('admin.comments.unapproved')}}" style="font-size:11px;">دیدگاه های تایید نشده<span class="customBadge mr-2">{{$unApprovedComments}}</span></a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                </li>
+
+
+                                <li class="nav-item text-right p-0">
+                                    <a class="nav-link" href="#"  data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-6" aria-controls="submenu-1-6"><i class="fas fa-tags"></i>تگ ها</a>
+                                    <div id="submenu-1-6" class="collapse submenu" style="">
+
+                                        <ul class="nav flex-column text-right p-0 mr-5 mb-1">
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('admin.tags.index')}}">لیست تگ ها</a>
+                                            </li>
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="{{route('admin.tags.create')}}">ایجاد تگ جدید</a>
                                             </li>
                                         </ul>
 

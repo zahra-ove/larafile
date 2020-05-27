@@ -53,6 +53,7 @@
                         </select>
                     </div>
 
+
                     <div class="form-group col-3 mr-2">
                         <label class="control-label" for="size" > حجم فایل بر حسب مگابایت</label>
                         <input type="text"  name="file_size"  id="size" class="form-control" value="{{old('file_size')}}" />
@@ -79,6 +80,16 @@
                         <label for="desc_ck" class="control-label">توضیحات محصول:</label>
                         <textarea name="description" id="desc_ck" cols="30" rows="20">{{old('description')}}</textarea>
                     </div>
+                </div>
+
+                <!-- Forth row ---- selecting tags for this file  -->
+                <div class="form-group required">
+                    <label for="tags" class="col-sm-1 control-label">تگ ها</label>
+                    <select class="tags-list" name="tags[]" id="tags" multiple="multiple">
+                        @foreach($tags as $tag)
+                            <option value="{{$tag->id}}">{{$tag->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 {{-- Buttons --}}

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Traits\uploadTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all();
-        // dd($articles);
+
         return view('admin.articles.index', compact('articles'));
     }
 
@@ -37,7 +38,9 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('admin.articles.create', compact('categories'));
+        $tags = Tag::all();         //retrieve all categories
+
+        return view('admin.articles.create', compact('categories', 'tags'));
     }
 
     /**
@@ -63,6 +66,8 @@ class ArticleController extends Controller
         $newArticle->user_id      =  $user_id;
         $newArticle->category_id  =  $request->input('category_id');
         $newArticle->save();
+
+        $newArticle->tags()->sync($request->input('tags'));   //attach determined tags to this file
 
 
         if($request->hasFile('image'))
@@ -101,7 +106,9 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);   //finding specified article and send it to edit view
         $categories = category::all();    //retrieve all categories
-        return view('admin.articles.edit', compact('article', 'categories'));
+        $tags = Tag::all();     //retrieve all tags
+
+        return view('admin.articles.edit', compact('article', 'categories', 'tags'));
     }
 
     /**
@@ -121,6 +128,7 @@ class ArticleController extends Controller
         $editedArticle->category_id  =  $request->input('category_id');
         $editedArticle->save();
 
+       $editedArticle->tags()->sync($request->input('tags'));   //attach determined tags to this file
 
         // if there is any image uploaded then store it.
         if($request->hasFile('image'))
@@ -155,6 +163,7 @@ class ArticleController extends Controller
             }
         }
 
+        $article->tags()->detach();
         $article->delete();   // then delete article
 
         return  redirect()->route('admin.articles.index')->with('status', 'مقاله موردنظر با موفقیت حذف شد!');

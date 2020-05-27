@@ -21,6 +21,7 @@ Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('auth', '
     Route::resource('/files', 'FileController');
     Route::resource('/articles', 'ArticleController');
     Route::resource('comments', 'CommentController')->except('create', 'store', 'edit', 'update');
+    Route::resource('/tags', 'TagController')->except('show');
     Route::get('comments-approval/{id}', 'CommentController@approve')->name('comments.approve');
     Route::get('unapproved-comments', 'CommentController@unapprovedComments')->name('comments.unapproved');
     Route::get('/image-deletion/{id}', 'ImageController@destroy')->name('image-deletion');

@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="{{asset('adminPanel/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('adminPanel/assets/vendor/charts/c3charts/c3.css')}}">
     <link rel="stylesheet" href="{{asset('adminPanel/assets/vendor/fonts/flag-icon-css/flag-icon.min.css')}}">
+    {{-- Select2 CSS --}}
+    <link rel="stylesheet" href="{{asset('adminPanel/assets/vendor/select2/css/select2.css')}}">
+    {{-- Custom CSS --}}
     <link rel="stylesheet" href="{{asset('adminPanel/css/customstyle.css')}}">
     <title>@yield('title', 'پنل مدیریت وبسایت Bevedel')</title>
 </head>

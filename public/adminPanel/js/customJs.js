@@ -8,3 +8,10 @@ ClassicEditor
 } );
 
 // end ckeditor configuration
+
+
+
+// select2 jqery plugin
+$(document).ready(function() {
+    $('.tags-list').select2();
+});

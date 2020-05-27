@@ -20,5 +20,7 @@
 {{-- ckeditor 5 --}}
 <script src="{{asset('ckeditor5-build-classic/ckeditor.js')}}"></script>
 <script src="{{asset('ckeditor5-build-classic/translations/fa.js')}}"></script>
+{{-- Select2 --}}
+<script src="{{asset('adminPanel/assets/vendor/select2/js/select2.min.js')}}"></script>
 {{-- My Custom JS --}}
 <script src="{{asset('adminPanel/js/customJs.js')}}"></script>

@@ -53,15 +53,29 @@ class Article extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    # many to many polymorphic relationship between tags table and articles table
+    public function tags()
+    {
+        return $this->morphToMany('App\Models\Tag', 'taggable');
+    }
 /*======================================================================
 |                                                                       |
 |            ************** Other Functions **************              |
 |                                                                       |
 ========================================================================*/
+    # get brief description fron article
     public function getBriefBodyAttribute()
     {
         return Str::words($this->body, 20, '...');
     }
+
+    # count number of comments for this article
+    public function CommentsNumber()
+    {
+        return $this->comments()->count();
+    }
+
 
 
 

@@ -57,10 +57,16 @@ class File extends Model
         return $this->morphToMany('App\Models\Cart', 'cartable');
     }
 
-    #one to many relationship between comments and files table
+    # one to many relationship between comments and files table
     public function comments()
     {
         return $this->morphMany('App\Models\Comment', 'commentable');
+    }
+
+    # many to many polymorphic relationship between tags table and files table
+    public function tags()
+    {
+        return $this->morphToMany('App\Models\Tag', 'taggable');
     }
 /*======================================================================
 |                                                                       |

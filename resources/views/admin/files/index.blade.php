@@ -10,23 +10,23 @@
 
     @if(isset($files)  &&  ($files->count() > 0) )
         <div class="row">
-            <div class="col-12  mx-auto">
-                <table class="table table-bordered  text-center table-hover">
-                    <thead class="font-weight-bold"">
+            <div class="col-12  mx-auto" >
+                <table class="table table-bordered  text-center table-hover" style="background-color: white;">
+                    <thead class="font-weight-bold" style="background-color:#80C8BC;">
                         <tr>
-                            <th>شماره</th>
-                            <th>کد محصول</th>
-                            <th>نام محصول</th>
-                            <th>قیمت به تومان</th>
-                            <th>آدرس ذخیره فایل</th>
-                            <th>تعداد دانلود</th>
-                            <th>تعداد بازدید</th>
-                            <th>نام دسته</th>
-                            <th>حجم فایل</th>
-                            <th>مدت زمان</th>
-                            <th>نوع فایل</th>
-                            <th>تصویر</th>
-                            <th>تنظیمات</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">شماره</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">کد محصول</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">نام محصول</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">قیمت به تومان</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">آدرس ذخیره فایل</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">تعداد دانلود</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">تعداد بازدید</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">نام دسته</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">حجم فایل</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">مدت زمان</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">نوع فایل</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">تصویر</th>
+                            <th class="font-weight-bold align-middle" style="color:white;border:none;">تنظیمات</th>
                         </tr>
                     </thead>
                     <tbody class="">

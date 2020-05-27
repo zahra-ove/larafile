@@ -61,6 +61,16 @@
                     </div>
                 </div>
 
+                <!-- Forth row ---- selecting tags for this file  -->
+                <div class="form-group required">
+                    <label for="tags" class="col-sm-1 control-label">تگ ها</label>
+                    <select class="tags-list" name="tags[]" id="tags" multiple="multiple">
+                        @foreach($tags as $tag)
+                            <option value="{{$tag->id}}">{{$tag->name}}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 {{-- Buttons --}}
                 <div class="row justify-content-center mt-5">
                     <div class="col-4 text-center">

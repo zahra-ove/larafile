@@ -273,7 +273,7 @@
             <div class="row">
                 <!-- start .col-md-12 -->
                 <div class="col-md-12">
-                    <div class="navbar-header">
+                    {{-- <div class="navbar-header">
                         <!-- start mainmenu__search -->
                         <div class="mainmenu__search">
                             <form action="#">
@@ -286,7 +286,7 @@
                             </form>
                         </div>
                         <!-- start mainmenu__search -->
-                    </div>
+                    </div> --}}
 
                     <nav class="navbar navbar-expand-md navbar-light mainmenu__menu">
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -300,7 +300,7 @@
                                 <li class="has_dropdown">
                                     <a href="{{url('/')}}">خانه </a>
                                 </li>
-                                <li class="has_dropdown">
+                                {{-- <li class="has_dropdown">
                                     <a href="all-products-list.blade.php">همه محصولات</a>
                                     <div class="dropdowns dropdown--menu">
                                         <ul>
@@ -316,7 +316,18 @@
 
                                         </ul>
                                     </div>
+                                </li> --}}
+
+
+                                <li class="has_megamenu">
+                                    <a href="{{route('shop.index')}}">فروشگاه</a>
                                 </li>
+
+                                <li class="has_megamenu">
+                                    <a href="{{route('blog.index')}}">مقالات</a>
+                                </li>
+
+
                                 <li class="has_dropdown">
                                     <a href="#">دسته بندی ها </a>
                                     <div class="dropdowns dropdown--menu">
@@ -330,13 +341,6 @@
                                     </div>
                                 </li>
 
-                                <li class="has_megamenu">
-                                    <a href="{{route('shop.index')}}">فروشگاه</a>
-                                </li>
-
-                                <li class="has_megamenu">
-                                    <a href="{{route('blog.index')}}">مقالات</a>
-                                </li>
 
                                 <li>
                                     <a href="{{url('/contact')}}">تماس با ما</a>
